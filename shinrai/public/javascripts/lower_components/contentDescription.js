@@ -10,18 +10,21 @@ export default class ContentDescription extends React.Component {
 	}
 
 	render() {
-		const { description, title, link } = this.props;
+		const { description, title, link, fontSize, fontColor } = this.props;
 
 		const titleStyle = {
 			textAlign: 'center',
-			fontSize: '150%',
-			fontFamily: 'sans-serif',
-			color: 'black'
+			fontSize: (fontSize*1.5)+'vmin',
+			fontFamily: 'Abril Fatface, cursive',
+			color: fontColor,
+			textShadow: '4px 4px '+(fontColor != 'black' ? 'black' : 'white'),
 		};
 
 		const descriptionStyle = {
-			fontFamily: 'arial',
-			color: 'black'
+			fontFamily: 'Abril Fatface, cursive',
+			color: fontColor,
+			fontSize: fontSize+'vmin',
+			textShadow: '4px 4px '+(fontColor != 'black' ? 'black' : 'white'),
 		};
 
 		const buttonStyle = {
@@ -32,9 +35,17 @@ export default class ContentDescription extends React.Component {
 				<div className='row' style={titleStyle}>{title}</div>
 				<div className='row' style={descriptionStyle}>{description}</div>
 				<div className='row'>
-					<Link to={link} className='btn btn-info' role='button' style={buttonStyle} >Home</Link>
+					{ link ? <Link to={link} className='btn btn-info' role='button' style={buttonStyle} >Goto Wiki</Link> : ''}
 				</div>
 			</div>
 		);
 	}
+}
+
+ContentDescription.defaultProps = {
+	link: '',
+	description: '',
+	title: '',
+	fontSize: 0,
+	fontColor: 'black',
 }
