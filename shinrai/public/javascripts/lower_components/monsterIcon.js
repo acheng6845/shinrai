@@ -20,7 +20,7 @@ export default class MonsterIcon extends React.Component {
 			backgroundColor: backgroundColor
 		};
 		return (
-			<div onClick={onClick}>
+			<div onClick={() => onClick.bind(this)}>
 				<Link className='btn btn-info' role='button' style={buttonStyle} to='monsterentry'></Link>
 			</div>
 		);
@@ -33,6 +33,6 @@ MonsterIcon.defaultProps = {
 	borderRadius: '0%',
 	border: '1px solid skyblue',
 	src: null,
-	onClick: console.log('Boop'),
+	onClick: () => console.log('Boop'),
 	backgroundColor: ''
 };

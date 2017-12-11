@@ -4,11 +4,13 @@ import top_leaders from './topLeadersReducer';
 import top_subs from './topSubsReducer';
 import search from './searchBarReducer';
 import select_monster from './selectMonsterReducer';
+import slide from './slideReducer';
 
 export default combineReducers({
 	navbarReducer,
 	top_leaders,
 	top_subs,
 	search,
-	select_monster
+	select_monster,
+	slide
 });

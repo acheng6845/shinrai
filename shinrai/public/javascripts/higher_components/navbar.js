@@ -1,6 +1,7 @@
 import React from 'react';
 import { IndexLink, Link } from 'react-router';
 
+//Deprecated
 const Navbar = React.createClass({
 
 	getInitialState() {
