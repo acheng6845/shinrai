@@ -5,6 +5,7 @@ import top_subs from './topSubsReducer';
 import search from './searchBarReducer';
 import select_monster from './selectMonsterReducer';
 import slide from './slideReducer';
+import tutorial from './tutorialReducer';
 
 export default combineReducers({
 	navbarReducer,
@@ -12,5 +13,6 @@ export default combineReducers({
 	top_subs,
 	search,
 	select_monster,
-	slide
+	slide,
+	tutorial,
 });

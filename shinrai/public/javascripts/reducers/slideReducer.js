@@ -16,7 +16,7 @@ export default function reducer(state={
 		{
 			backgroundImage: "abyss.png",
 			title: {text: "Tool"},
-			body: {text: "Find Robust Wikis For", subText: "Popular Mobile Games"},
+			body: {text: "Find Robust Tools For", subText: "Popular Mobile Games"},
 			end: {text: "Whenever you need information on a unit or mechanic, a quick search", subText: "through the wiki service will yield the necessary results."},
 			topImage: "chen.png",
 			bottomImage: "gong.png",

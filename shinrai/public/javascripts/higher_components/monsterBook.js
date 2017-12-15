@@ -16,6 +16,7 @@ export default class MonsterBook extends React.Component {
 	//when one of the generated monster icons is clicked, it should dispatch the monster's info to the store, so that the Entry component has access to 
 	//the selected monster's information.
 	dispatchSelection(index) {
+		console.log(index);
 		this.props.dispatch(makeSelection(index));
 	}
 

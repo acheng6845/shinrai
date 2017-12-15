@@ -9,6 +9,7 @@ import IndexPage from './javascripts/higher_components/shinraiIndex';
 import MonsterBook from './javascripts/higher_components/monsterBook';
 import Entry from './javascripts/higher_components/entry';
 import Navbar from './javascripts/lower_components/shinraiNavbar';
+import TutorialIndex from './javascripts/higher_components/tutorialIndex';
 
 const App = createReactClass({
 	render() {
@@ -19,7 +20,7 @@ const App = createReactClass({
 			fontSize: "2em"
 		};
 		const navActiveStyle = {
-			color: "red",
+			color: "#cc4141",
 		};
 		const centerContent = [
 			<NavLink to="/tutorial"  style={{...navStyle, marginLeft: "35vw"}} activeStyle={navActiveStyle}>Lessons</NavLink>,
@@ -28,12 +29,13 @@ const App = createReactClass({
 		];
 		return (
 			<BrowserRouter>
-				<Navbar padding="1%" centerContent={centerContent} brand="Aaron's Study">
+				<Navbar padding="1%" centerContent={centerContent} brand="Aaron's Portfolio">
 					<div>
 						<Route exact path='/' component={TrueIndex} />
 						<Route path='/games' component={IndexPage} />
 						<Route path='/pad' component={MonsterBook} />
-						<Route path='/pad/unit' component={Entry} />
+						<Route path='/padunit' component={Entry} />
+						<Route path='/tutorial' component={TutorialIndex} />
 					</div>
 				</Navbar>
 			</BrowserRouter>
