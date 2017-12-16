@@ -14,7 +14,7 @@ router.get('/:name', function(req, res, next) {
 });
 
 router.get('/id/:name', function(req, res, next) {
-	mongoose.model('units').findOne({number: parseInt(req.params.id)}, function(err, unit) {
+	mongoose.model('units').findOne({number: parseInt(req.params.name)}, function(err, unit) {
 		res.send(unit);
 	});
 });

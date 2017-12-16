@@ -10111,7 +10111,9 @@ function fetchMonster(id) {
 function fetchMonsterName(name) {
 	return function (dispatch) {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/'+name)
-		return (0, _isomorphicFetch2.default)('https://herokushinrai.herokuapp.com/api/' + name, { mode: 'no-cors' }).then(function (response) {
+		return (0, _isomorphicFetch2.default)('http://prototypeaaron.info/api/' + name)
+		//return fetch('http://localhost:3000/api/'+name)
+		.then(function (response) {
 			return response.json();
 		}).then(function (json) {
 			return dispatch(receiveMonsterName(json));
@@ -10137,7 +10139,9 @@ function requestMonsterName(name) {
 function makeSelection(monster) {
 	return function (dispatch) {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/unit/'+monster)
-		return (0, _isomorphicFetch2.default)('https://herokushinrai.herokuapp.com/api/id/' + monster, { mode: 'no-cors' }).then(function (response) {
+		return (0, _isomorphicFetch2.default)('http://prototypeaaron.info/api/id/' + monster)
+		//return fetch('http://localhost:3000/api/id/'+monster)
+		.then(function (response) {
 			return response.json();
 		}).then(function (json) {
 			return dispatch(receiveSelection(json));
@@ -18357,7 +18361,6 @@ var MonsterBook = (_dec = (0, _reactRedux.connect)(function (store) {
 		//when one of the generated monster icons is clicked, it should dispatch the monster's info to the store, so that the Entry component has access to 
 		//the selected monster's information.
 		value: function dispatchSelection(index) {
-			console.log(index);
 			this.props.dispatch((0, _searchBarActions.makeSelection)(index));
 		}
 	}, {
@@ -49029,7 +49032,7 @@ var Entry = (_dec = (0, _reactRedux.connect)(function (store) {
 
 			var stars = [];
 			for (var i = 0; i < monster.rarity; i++) {
-				stars.push(_react2.default.createElement('span', { className: 'glyphicon glyphicon-star' }));
+				stars.push(_react2.default.createElement('span', { key: 'star' + i, className: 'glyphicon glyphicon-star' }));
 			}
 
 			var mappedTypes = monster.types.map(function (type, index) {
@@ -49112,22 +49115,22 @@ var Entry = (_dec = (0, _reactRedux.connect)(function (store) {
 					_react2.default.createElement(_monsterEntry2.default, { url: url })
 				),
 				_react2.default.createElement(_entrySection2.default, { title: { title: monster.name }, stats: stats1, header: header1, types: mappedTypes,
-					image: imageIcon, extra: extra1, fontSize: '150%', key: 'section_stats' }),
+					image: imageIcon, extra: extra1, fontSize: '150%', keyProp: 'section_stats' }),
 				_react2.default.createElement(_entrySection2.default, { title: { title: 'Active Skill' }, description: { color: '#74C365', text: monster.active_skill[1] },
 					header: header2, types: _react2.default.createElement(
 						'div',
 						{ style: _extends({}, labelStyle, { fontSize: '105%' }) },
 						'Orb Convert'
-					), fontSize: '150%', key: 'section_active_skill' }),
+					), fontSize: '150%', keyProp: 'section_active_skill' }),
 				_react2.default.createElement(_entrySection2.default, { title: { title: 'Leader Skill' }, description: { color: '#74C365', text: monster.leader_skill[1] },
 					stats: stats3, header: header3, types: _react2.default.createElement(
 						'div',
 						{ style: _extends({}, labelStyle, { fontSize: '105%' }) },
 						'Combo, RCV Boost'
 					), fontSize: '150%',
-					key: 'section_leader_skill' }),
+					keyProp: 'section_leader_skill' }),
 				_react2.default.createElement(_entrySection2.default, { title: { title: 'Popular Teams' }, description: { color: '#74C365', text: 'Under Construction!' }, fontSize: '150%',
-					key: 'section_popular_teams' })
+					keyProp: 'section_popular_teams' })
 			);
 		}
 	}]);
@@ -49245,7 +49248,8 @@ var EntrySection = function (_React$Component) {
 			    image = _props.image,
 			    extra = _props.extra,
 			    fontSize = _props.fontSize,
-			    table = _props.table; //object, object, array of object, array of objects, jsx map, component
+			    table = _props.table,
+			    keyProp = _props.keyProp; //object, object, array of object, array of objects, jsx map, component
 
 			var nameStyle = {
 				fontSize: fontSize,
@@ -49283,7 +49287,7 @@ var EntrySection = function (_React$Component) {
 				return _react2.default.createElement(
 					'div',
 					{ className: obj.divClass, style: _extends({}, labelStyle, { fontSize: obj.size !== undefined ? obj.size : '150%', marginTop: obj.margin !== undefined ? obj.margin : '.5%',
-							color: obj.color !== undefined ? obj.color : '' }), key: title.title + 'header_obj' + index },
+							color: obj.color !== undefined ? obj.color : '' }), key: keyProp + title.title + 'header_obj' + index },
 					obj.text
 				);
 			});
@@ -49294,15 +49298,15 @@ var EntrySection = function (_React$Component) {
 				statsDiv = stats.map(function (obj, index) {
 					return _react2.default.createElement(
 						'div',
-						{ key: title.title + 'stats_div' + index },
+						{ key: keyProp + title.title + 'stats_div' + index },
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-xs-8 col-sm-2 col-md-1', style: _extends({}, labelStyle, { color: obj.color }), key: title.title + 'stats_obj_1_' + index },
+							{ className: 'col-xs-8 col-sm-2 col-md-1', style: _extends({}, labelStyle, { color: obj.color }), key: keyProp + title.title + 'stats_obj_1_' + index },
 							obj.type
 						),
 						_react2.default.createElement(
 							'div',
-							{ className: 'col-xs-4 col-sm-2', key: title.title + 'stats_obj_2_' + index },
+							{ className: 'col-xs-4 col-sm-2', key: keyProp + title.title + 'stats_obj_2_' + index },
 							obj.value
 						)
 					);
@@ -49318,7 +49322,7 @@ var EntrySection = function (_React$Component) {
 				tableHeaders = table.titles.map(function (obj, index) {
 					return _react2.default.createElement(
 						'th',
-						{ style: { color: obj.color, textAlign: 'center' }, key: title.title + 'th' + index },
+						{ style: { color: obj.color, textAlign: 'center' }, key: keyProp + title.title + 'th' + index },
 						obj.value
 					);
 				});
@@ -49328,7 +49332,7 @@ var EntrySection = function (_React$Component) {
 					return obj.map(function (cell, index_y) {
 						return _react2.default.createElement(
 							'td',
-							{ style: { color: cell.color }, key: 'td' + index_x + '_' + index_y },
+							{ style: { color: cell.color }, key: keyProp + 'td' + index_x + '_' + index_y },
 							cell.value
 						);
 					});
@@ -49338,7 +49342,7 @@ var EntrySection = function (_React$Component) {
 				tableValues = mappedRows.map(function (row, index) {
 					return _react2.default.createElement(
 						'tr',
-						{ key: title.title + 'tr' + index },
+						{ key: keyProp + title.title + 'tr' + index },
 						row
 					);
 				});
@@ -49418,7 +49422,8 @@ EntrySection.defaultProps = {
 	image: null,
 	extra: null,
 	fontSize: '105%',
-	table: null
+	table: null,
+	keyProp: 'default_key'
 };
 
 /***/ }),

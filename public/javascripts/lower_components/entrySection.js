@@ -2,7 +2,7 @@ import React from 'react';
 
 export default class EntrySection extends React.Component {
 	render() {
-		const { title, description, stats, header, types, image, extra, fontSize, table } = this.props; //object, object, array of object, array of objects, jsx map, component
+		const { title, description, stats, header, types, image, extra, fontSize, table, keyProp } = this.props; //object, object, array of object, array of objects, jsx map, component
 		const nameStyle = {
 			fontSize: fontSize,
 			borderRadius: '5px',
@@ -35,7 +35,7 @@ export default class EntrySection extends React.Component {
 		//div for the section's description.
 		const headerDiv = header.map((obj, index) =>
 			<div className={obj.divClass} style={{...labelStyle, fontSize: (obj.size !== undefined) ? obj.size : '150%', marginTop: (obj.margin !== undefined) ? obj.margin : '.5%',
-				color: (obj.color !== undefined) ? obj.color : ''}} key={title.title+'header_obj'+index}>
+				color: (obj.color !== undefined) ? obj.color : ''}} key={keyProp+title.title+'header_obj'+index}>
 				{obj.text}
 			</div>
 		);
@@ -44,11 +44,11 @@ export default class EntrySection extends React.Component {
 		let statsDiv;
 		if (stats) {
 			statsDiv = stats.map((obj, index) =>
-				<div key={title.title+'stats_div'+index}>
-					<div className='col-xs-8 col-sm-2 col-md-1' style={{...labelStyle, color: obj.color}} key={title.title+'stats_obj_1_'+index}>
+				<div key={keyProp+title.title+'stats_div'+index}>
+					<div className='col-xs-8 col-sm-2 col-md-1' style={{...labelStyle, color: obj.color}} key={keyProp+title.title+'stats_obj_1_'+index}>
 						{obj.type}	
 					</div>
-					<div className='col-xs-4 col-sm-2' key={title.title+'stats_obj_2_'+index}>
+					<div className='col-xs-4 col-sm-2' key={keyProp+title.title+'stats_obj_2_'+index}>
 						{obj.value}
 					</div>
 				</div>
@@ -60,19 +60,19 @@ export default class EntrySection extends React.Component {
 		let tableDiv, tableHeaders, tableValues;
 		if (table) {
 			tableHeaders = table.titles.map((obj, index) => 
-				<th style={{color: obj.color, textAlign: 'center'}} key={title.title+'th'+index}>{obj.value}</th>
+				<th style={{color: obj.color, textAlign: 'center'}} key={keyProp+title.title+'th'+index}>{obj.value}</th>
 			);
 			
 			//each row needs to mapped to a <td> element
 			const mappedRows = table.values.map((obj, index_x) => 
 				obj.map((cell, index_y) =>
-					<td style={{color: cell.color}} key={'td'+index_x+'_'+index_y}>{cell.value}</td>
+					<td style={{color: cell.color}} key={keyProp+'td'+index_x+'_'+index_y}>{cell.value}</td>
 				)
 			);
 			
 			//each mapped <td> element needs to be placed into a <tr> element
 			tableValues = mappedRows.map((row, index) =>
-				<tr key={title.title+'tr'+index}>{row}</tr>
+				<tr key={keyProp+title.title+'tr'+index}>{row}</tr>
 			);
 
 			tableDiv = 
@@ -128,5 +128,6 @@ EntrySection.defaultProps = {
 	image: null,
 	extra: null,
 	fontSize: '105%',
-	table: null
+	table: null,
+	keyProp: 'default_key',
 };

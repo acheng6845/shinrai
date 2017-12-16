@@ -31,7 +31,7 @@ export default class Entry extends React.Component {
 
 		const stars = [];
 		for (let i = 0; i < monster.rarity; i++) {
-			stars.push(<span className='glyphicon glyphicon-star'></span>);
+			stars.push(<span key={'star'+i} className='glyphicon glyphicon-star'></span>);
 		}
 		
 		const mappedTypes = monster.types.map((type, index) => {
@@ -117,17 +117,17 @@ export default class Entry extends React.Component {
 					<MonsterEntry url={url} />
 				</div>
 				<EntrySection title={{title: monster.name}} stats={stats1} header={header1} types={mappedTypes}
-					image={imageIcon} extra={extra1} fontSize={'150%'} key='section_stats' />
+					image={imageIcon} extra={extra1} fontSize={'150%'} keyProp='section_stats' />
 
 				<EntrySection title={{title: 'Active Skill'}} description={{color: '#74C365', text: monster.active_skill[1]}}
-					header={header2} types={<div style={{...labelStyle, fontSize: '105%'}}>Orb Convert</div>} fontSize={'150%'} key='section_active_skill'/>
+					header={header2} types={<div style={{...labelStyle, fontSize: '105%'}}>Orb Convert</div>} fontSize={'150%'} keyProp='section_active_skill'/>
 				
 				<EntrySection title={{title: 'Leader Skill'}} description={{color: '#74C365', text: monster.leader_skill[1]}}
 					stats={stats3} header={header3} types={<div style={{...labelStyle, fontSize: '105%'}}>Combo, RCV Boost</div>} fontSize={'150%'} 
-					key='section_leader_skill'/>
+					keyProp='section_leader_skill'/>
 
 				<EntrySection title={{title: 'Popular Teams'}} description={{color: '#74C365', text: 'Under Construction!'}} fontSize={'150%'}
-					key='section_popular_teams'/>	
+					keyProp='section_popular_teams'/>	
 			</div>
 		);
 	}

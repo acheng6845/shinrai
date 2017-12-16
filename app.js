@@ -25,8 +25,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Origin', '*');
-  res.header('Access-Control-Allow-Origin', 'GET, PUT, POST, DELETE');
-  res.header('Access-Control-Allow-Origin', 'Content-Type');
+  //res.header('Access-Control-Allow-Origin', 'GET, PUT, POST, DELETE');
+  //res.header('Access-Control-Allow-Origin', 'Content-Type');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -55,6 +56,7 @@ if (app.get('env') === 'development') {
     });
   });
   mongoose.connect('mongodb://acheng6845:dragoon@ds143588.mlab.com:43588/heroku_dnn6ww4r');
+  console.log("Mongoose connected.");
 }
 
 // production error handler
