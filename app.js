@@ -28,8 +28,6 @@ app.use(function(req, res, next) {
   //res.header('Access-Control-Allow-Origin', 'GET, PUT, POST, DELETE');
   //res.header('Access-Control-Allow-Origin', 'Content-Type');
   res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  req.header('Access-Control-Allow-Origin', '*');
-  req.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
   next();
 });
 
@@ -65,7 +63,11 @@ if (app.get('env') === 'development') {
       keepAlive: 300000, connectTimeoutMS: 30000
     }}
   };
-  mongoose.connect('mongodb://acheng6845:dragoon@ds143588.mlab.com:43588/heroku_dnn6ww4r', mongoOptions);
+  if(process.env.MONGODB_URI) {
+    mongoose.connect(process.env.MONGODB_URI, mongoOptions);
+  } else {
+    mongoose.connect('mongodb://acheng6845:dragoon@ds143588.mlab.com:43588/heroku_dnn6ww4r', mongoOptions);
+  }
   var conn = mongoose.connection;
   conn.on('error', console.error.bind(console, 'connection error'));
 }
