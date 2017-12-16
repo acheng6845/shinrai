@@ -10111,7 +10111,7 @@ function fetchMonster(id) {
 function fetchMonsterName(name) {
 	return function (dispatch) {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/'+name)
-		return (0, _isomorphicFetch2.default)('http://localhost:3000/api/' + name).then(function (response) {
+		return (0, _isomorphicFetch2.default)('https://herokushinrai.herokuapp.com/api/' + name).then(function (response) {
 			return response.json();
 		}).then(function (json) {
 			return dispatch(receiveMonsterName(json));
@@ -10137,7 +10137,7 @@ function requestMonsterName(name) {
 function makeSelection(monster) {
 	return function (dispatch) {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/unit/'+monster)
-		return (0, _isomorphicFetch2.default)('http://localhost:3000/api/id/' + monster).then(function (response) {
+		return (0, _isomorphicFetch2.default)('https://herokushinrai.herokuapp.com/api/id/' + monster).then(function (response) {
 			return response.json();
 		}).then(function (json) {
 			return dispatch(receiveSelection(json));
