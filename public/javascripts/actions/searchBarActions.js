@@ -11,8 +11,8 @@ export function fetchMonster(id) {
 export function fetchMonsterName(name) {
 	return dispatch => {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/'+name)
-		return fetch('http://prototypeaaron.info/api/'+name)
-		//return fetch('http://localhost:3000/api/'+name)
+		//return fetch('http://prototypeaaron.info/api/'+name)
+		return fetch('http://47.18.178.225:3000/api/'+name)
 			.then(response => response.json())
 			.then(json => dispatch(receiveMonsterName(json)))
 	}
@@ -36,8 +36,8 @@ export function requestMonsterName(name) {
 export function makeSelection(monster) {
 	return function(dispatch) {
 		//return fetch('https://express-api-acheng6845.c9users.io:8080/unit/'+monster)
-		return fetch('http://prototypeaaron.info/api/id/'+monster)
-		//return fetch('http://localhost:3000/api/id/'+monster)
+		//return fetch('http://prototypeaaron.info/api/id/'+monster)
+		return fetch('http://47.18.178.225:3000/api/id/'+monster)
 			.then(response => response.json())
 			.then(json => dispatch(receiveSelection(json)))
 	}
