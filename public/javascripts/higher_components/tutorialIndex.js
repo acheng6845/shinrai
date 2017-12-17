@@ -9,13 +9,17 @@ import { fetchTutorialPage } from '../actions/tutorialActions';
 		data: store.tutorial.data,
 		error: store.tutorial.error,
 		chapters: store.tutorial.chapters,
+		index: store.tutorial.index,
 	};
 })
 export default class TutorialIndex extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
-		this.fetchTutorialPage(0);
+		if(!this.props.index) this.fetchTutorialPage(0);
+		this.state = {
+			index: this.props.index,
+		};
 	}
 
 	componentDidMount() {
@@ -42,8 +46,10 @@ export default class TutorialIndex extends React.Component {
 			backgroundColor: "white",
 		};
 
-		const tableOfContents = <NavbarLeft heading="Chapters" links={error == null && data != null ? chapters : ""} />;
-		const pageContent = <TutorialPage title={error == null  && data != null ? data.chapter : ""} sections={error == null && data != null ? data.sections : ""} />;
+		const tableOfContents = <NavbarLeft heading="Chapters" links={error == null && data != null ? chapters : ""} onClick={this.fetchTutorialPage.bind(this)}/>;
+		const pageContent = <TutorialPage index={this.props.index} length={chapters != null ? chapters.length : 0} onClick={this.fetchTutorialPage.bind(this)}
+			title={error == null  && data != null ? data.chapter : ""} sections={error == null && data != null ? data.sections : ""} />;
+		
 
 		const largeBrowserDiv = (
 			<div style={largerStyle}>
@@ -121,9 +127,13 @@ class NavbarTop extends React.Component {
 			</div>
 		);
 
+		const divStyle = {
+			fontFamily: "El Messiri, cursive",
+		};
+
 
 		return (
-			<div>
+			<div className="elMessiri" style={divStyle}>
 				{this.state.showLeft ? left : right }
 				{this.state.showLeft ? leftChild : rightChild }
 			</div>
@@ -134,6 +144,10 @@ class NavbarLeft extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 
+	}
+
+	fetchTutorialPage(index) {
+		this.props.onClick(index);
 	}
 
 	render() {
@@ -157,9 +171,9 @@ class NavbarLeft extends React.Component {
 		};
 
 		return (
-			<div style={sectionStyle}>
+			<div className="elMessiri" style={sectionStyle}>
 				<div style={headingStyle}>{heading}</div>
-				{links != "" ? links.map((link, index) => <div style={linksStyle} key={"linksDiv"+index}>{link}</div>) : ""}
+				{links != "" ? links.map((link, index) => <div onClick={this.fetchTutorialPage.bind(this, index)} style={linksStyle} key={"linksDiv"+index}>{link}</div>) : ""}
 			</div>
 		);
 	}

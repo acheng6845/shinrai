@@ -210,7 +210,7 @@ export default class IndexPage extends React.Component {
 					},
 				}))}>
 				{interpolatedStyles =>
-					<div>
+					<div className="smythe">
 						{interpolatedStyles.map(config => {
 							const key = config.key;
 							return this.divs[config.key](config.key, config.style);

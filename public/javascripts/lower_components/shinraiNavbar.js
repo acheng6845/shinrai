@@ -29,7 +29,7 @@ export default class Navbar extends React.Component {
 		};
 
 		return (
-			<section>
+			<section className="elMessiri">
 				<nav className="navbar navbar-default" style={navStyle}>
 					<div className="container-fluid">
 						<div className="navbar-header">

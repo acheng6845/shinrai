@@ -11,7 +11,7 @@ export default class EntrySection extends React.Component {
 			borderTop: '3px solid white',
 			marginTop: '2%',
 			backgroundColor: 'gray',
-			fontFamily: 'Georgia'
+			//fontFamily: 'Georgia'
 		};
 
 		const statStyle = {
@@ -21,7 +21,7 @@ export default class EntrySection extends React.Component {
 		const labelStyle = {
 			fontSize: '105%',
 			fontWeight: 'bold',
-			fontFamily: 'Georgia'
+			//fontFamily: 'Georgia'
 		};
 
 		const imageDiv = (

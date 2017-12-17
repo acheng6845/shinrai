@@ -46,7 +46,7 @@ export default class ContentButton extends React.Component {
 			text-transform: uppercase;
 			border: 0 none;
 			outline: 0 none;
-			font-family: 'Abril Fatface', cursive;
+
 		`;
 
 		const contentDiv = classNames({

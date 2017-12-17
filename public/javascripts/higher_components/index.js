@@ -95,9 +95,6 @@ export default class TrueIndex extends React.Component {
 		const height = browserWidth > 500 ? "50vh" : "80vh";
 		
 		const sectionStyle = {
-			backgroundImage: data != null ? "url(../../images/"+data.backgroundImage+")" : "",
-			backgroundSize: "cover",
-			height: "30vh",
 		};
 		
 		const divStyle = {
@@ -130,7 +127,7 @@ export default class TrueIndex extends React.Component {
 		}
 
 		return (
-			<section>
+			<section className="smythe" style={sectionStyle}>
 				<div ref={el => this.quoteSlider = el} style={divStyle}>
 					{ !this.state.removeQuote ?
 						<QuoteSlider title={data != null ? data.title : ""} body={data != null ? data.body : ""} end={data != null ? data.end : ""} 
@@ -144,17 +141,17 @@ export default class TrueIndex extends React.Component {
 				<div className="col-xs-12" style={{backgroundColor: "gray", paddingBottom: "5vh"}}>
 					<NavDescription image="../../images/javascript.png" col="6" imageLink="/" 
 					links={[
-						{link: "/", text: "Popular Quick Links", color: "hotpink"},
-						{link: "/tutorial", text: "Introduction", color: "silver"},
-						{link: "/tutorial", text: "Hoisting", color: "silver"},
-						{link: "/tutorial", text: "Currying", color: "silver"}
+						{link: "/", text: "Popular Quick Links", color: "#AFEEEE"},
+						{link: "/tutorial", text: "Introduction", color: "white"},
+						{link: "/tutorial", text: "Hoisting", color: "white"},
+						{link: "/tutorial", text: "Currying", color: "white"}
 					]} />
 					<NavDescription image="../../images/tools.png" col="6" imageLink="/" 
 					links={[
-						{link: "/", text: "Popular Quick Links", color: "hotpink"},
-						{link: "/games", text: "Fate Grand Order", color: "silver"},
-						{link: "/games", text: "Puzzle & Dragons", color: "silver"},
-						{link: "/games", text: "Fire Emblem Heroes", color: "silver"}
+						{link: "/", text: "Popular Quick Links", color: "#AFEEEE"},
+						{link: "/pad", text: "Fate Grand Order", color: "silver"},
+						{link: "/pad", text: "Puzzle & Dragons", color: "white"},
+						{link: "/pad", text: "Fire Emblem Heroes", color: "silver"}
 					]} />
 				</div>
 			</section>

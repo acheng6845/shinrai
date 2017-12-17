@@ -8736,7 +8736,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _templateObject = _taggedTemplateLiteral(['\n\t\t\tbackground: white;\n\t\t\ttext-transform: uppercase;\n\t\t\tborder: 0 none;\n\t\t\toutline: 0 none;\n\t\t\tfont-family: \'Abril Fatface\', cursive;\n\t\t'], ['\n\t\t\tbackground: white;\n\t\t\ttext-transform: uppercase;\n\t\t\tborder: 0 none;\n\t\t\toutline: 0 none;\n\t\t\tfont-family: \'Abril Fatface\', cursive;\n\t\t']);
+var _templateObject = _taggedTemplateLiteral(['\n\t\t\tbackground: white;\n\t\t\ttext-transform: uppercase;\n\t\t\tborder: 0 none;\n\t\t\toutline: 0 none;\n\n\t\t'], ['\n\t\t\tbackground: white;\n\t\t\ttext-transform: uppercase;\n\t\t\tborder: 0 none;\n\t\t\toutline: 0 none;\n\n\t\t']);
 
 var _react = __webpack_require__(1);
 
@@ -18240,13 +18240,11 @@ var ContentDescription = function (_React$Component) {
 			var titleStyle = {
 				textAlign: 'center',
 				fontSize: fontSize * 1.5 + 'vmin',
-				fontFamily: 'Abril Fatface, cursive',
 				color: fontColor,
 				textShadow: '4px 4px ' + (fontColor != 'black' ? 'black' : 'white')
 			};
 
 			var descriptionStyle = {
-				fontFamily: 'Abril Fatface, cursive',
 				color: fontColor,
 				fontSize: fontSize + 'vmin',
 				textShadow: '4px 4px ' + (fontColor != 'black' ? 'black' : 'white')
@@ -18257,7 +18255,7 @@ var ContentDescription = function (_React$Component) {
 			};
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ className: 'smythe' },
 				_react2.default.createElement(
 					'div',
 					{ className: 'row', style: titleStyle },
@@ -18603,7 +18601,7 @@ var App = (0, _createReactClass2.default)({
 		var navStyle = {
 			color: "white",
 			border: "0",
-			fontFamily: "arial",
+			//fontFamily: "arial",
 			fontSize: "2em"
 		};
 		var navActiveStyle = {
@@ -39782,11 +39780,7 @@ var TrueIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 			//slideshow should cover 80% of the screen on small browsers/devices and half of the screen otherwise
 			var height = browserWidth > 500 ? "50vh" : "80vh";
 
-			var sectionStyle = {
-				backgroundImage: data != null ? "url(../../images/" + data.backgroundImage + ")" : "",
-				backgroundSize: "cover",
-				height: "30vh"
-			};
+			var sectionStyle = {};
 
 			var divStyle = {
 				height: height,
@@ -39819,7 +39813,7 @@ var TrueIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 
 			return _react2.default.createElement(
 				'section',
-				null,
+				{ className: 'smythe', style: sectionStyle },
 				_react2.default.createElement(
 					'div',
 					{ ref: function ref(el) {
@@ -39838,9 +39832,9 @@ var TrueIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 					'div',
 					{ className: 'col-xs-12', style: { backgroundColor: "gray", paddingBottom: "5vh" } },
 					_react2.default.createElement(_navDescription2.default, { image: '../../images/javascript.png', col: '6', imageLink: '/',
-						links: [{ link: "/", text: "Popular Quick Links", color: "hotpink" }, { link: "/tutorial", text: "Introduction", color: "silver" }, { link: "/tutorial", text: "Hoisting", color: "silver" }, { link: "/tutorial", text: "Currying", color: "silver" }] }),
+						links: [{ link: "/", text: "Popular Quick Links", color: "#AFEEEE" }, { link: "/tutorial", text: "Introduction", color: "white" }, { link: "/tutorial", text: "Hoisting", color: "white" }, { link: "/tutorial", text: "Currying", color: "white" }] }),
 					_react2.default.createElement(_navDescription2.default, { image: '../../images/tools.png', col: '6', imageLink: '/',
-						links: [{ link: "/", text: "Popular Quick Links", color: "hotpink" }, { link: "/games", text: "Fate Grand Order", color: "silver" }, { link: "/games", text: "Puzzle & Dragons", color: "silver" }, { link: "/games", text: "Fire Emblem Heroes", color: "silver" }] })
+						links: [{ link: "/", text: "Popular Quick Links", color: "#AFEEEE" }, { link: "/pad", text: "Fate Grand Order", color: "silver" }, { link: "/pad", text: "Puzzle & Dragons", color: "white" }, { link: "/pad", text: "Fire Emblem Heroes", color: "silver" }] })
 				)
 			);
 		}
@@ -47529,12 +47523,12 @@ var QuoteSlider = function (_React$Component) {
 				position: "relative",
 				fontSize: "1em",
 				color: "white",
-				textShadow: "2px 2px black",
+				//textShadow: "2px 2px black",
 				textAlign: position,
 				//marginTop: title.top,
 				display: "none",
 				//left: title.left != null ? title.left : "0%",
-				top: "10vh",
+				top: "8vh",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
 				whiteSpace: "nowrap"
@@ -47549,7 +47543,7 @@ var QuoteSlider = function (_React$Component) {
 				//marginTop: body.top,
 				display: "none",
 				//left: body.left != null ? body.left : "0%",
-				top: "15vh",
+				top: "12vh",
 				fontWeight: "700",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
@@ -47565,7 +47559,7 @@ var QuoteSlider = function (_React$Component) {
 				//marginTop: end.top,
 				display: "none",
 				//left: end.left != null ? end.left : "0%",
-				top: "18vh",
+				top: "15vh",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
 				whiteSpace: isSmall ? "wrap" : "nowrap"
@@ -47584,16 +47578,16 @@ var QuoteSlider = function (_React$Component) {
 			var linkStyle = {
 				position: "relative",
 				textAlign: position,
-				top: "23vh",
+				top: "18vh",
 				fontSize: "20px",
 				fontWeight: "700",
-				textShadow: "2px 2px black",
+				textShadow: "1px 1px silver",
 				display: "none"
 			};
 
 			var buttonStyle = {
 				display: "none",
-				backgroundColor: "hotpink",
+				backgroundColor: "#AFEEEE",
 				paddingLeft: "2em",
 				paddingRight: "2em",
 				paddingTop: "1em",
@@ -47689,7 +47683,7 @@ var LinkButton = function (_React$Component2) {
 
 		_this4.state = {
 			color: "white",
-			backgroundColor: "hotpink"
+			backgroundColor: "#AFEEEE"
 		};
 		return _this4;
 	}
@@ -47711,19 +47705,17 @@ var LinkButton = function (_React$Component2) {
 	}, {
 		key: 'onHover',
 		value: function onHover() {
-			console.log("Hovering");
 			this.setState({
-				color: "hotpink",
+				color: "#AFEEEE",
 				backgroundColor: "white"
 			});
 		}
 	}, {
 		key: 'onMouseLeave',
 		value: function onMouseLeave() {
-			console.log("Leaving");
 			this.setState({
 				color: "white",
-				backgroundColor: "hotpink"
+				backgroundColor: "#AFEEEE"
 			});
 		}
 	}, {
@@ -47740,7 +47732,8 @@ var LinkButton = function (_React$Component2) {
 				paddingBottom: "20px",
 				paddingLeft: "40px",
 				paddingRight: "40px",
-				borderRadius: "35%"
+				borderRadius: "35%",
+				border: "2px solid silver"
 			};
 
 			return _react2.default.createElement(
@@ -47825,13 +47818,14 @@ var NavButton = function (_React$Component) {
 			var buttonStyle = {
 				//backgroundColor: active ? "hotpink" : "skyblue",
 				backgroundColor: "transparent",
-				border: "2px double " + (active ? "hotpink" : "silver"),
+				border: "2px double " + (active ? "#40E0D0" : "silver"),
 				borderRadius: "50%",
 				height: "50px",
 				width: "50px",
 				backgroundImage: image != null ? "url(" + image + ")" : null,
-				color: "white",
-				textShadow: "1px 1px black"
+				color: "black",
+				fontWeight: "300"
+				//textShadow: "1px 1px black",
 			};
 
 			return _react2.default.createElement(
@@ -47956,8 +47950,8 @@ var NavDescription = function (_React$Component) {
 			var linkStyle = {
 				fontSize: "2em",
 				fontWeight: "700",
-				backgroundColor: "transparent",
-				textShadow: "1px 1px white"
+				backgroundColor: "transparent"
+				//textShadow: "1px 1px white",
 			};
 			return _react2.default.createElement(
 				'div',
@@ -48273,7 +48267,7 @@ var IndexPage = function (_React$Component) {
 				function (interpolatedStyles) {
 					return _react2.default.createElement(
 						'div',
-						null,
+						{ className: 'smythe' },
 						interpolatedStyles.map(function (config) {
 							var key = config.key;
 							return _this2.divs[config.key](config.key, config.style);
@@ -49024,7 +49018,7 @@ var Entry = (_dec = (0, _reactRedux.connect)(function (store) {
 			var labelStyle = {
 				fontSize: '100%',
 				fontWeight: 'bold',
-				fontFamily: 'Georgia',
+				//fontFamily: 'Georgia',
 				textAlign: 'center'
 			};
 
@@ -49101,7 +49095,7 @@ var Entry = (_dec = (0, _reactRedux.connect)(function (store) {
 
 			return _react2.default.createElement(
 				'div',
-				{ className: 'row', style: { color: 'white' } },
+				{ className: 'row elMessiri', style: { color: 'white' } },
 				_react2.default.createElement(
 					'div',
 					{ className: 'hidden-xs hidden-sm hidden-md hidden-lg col-md-5 col-lg-4', style: { marginBottom: '5%' } },
@@ -49256,8 +49250,8 @@ var EntrySection = function (_React$Component) {
 				borderRight: '3px solid white',
 				borderTop: '3px solid white',
 				marginTop: '2%',
-				backgroundColor: 'gray',
-				fontFamily: 'Georgia'
+				backgroundColor: 'gray'
+				//fontFamily: 'Georgia'
 			};
 
 			var statStyle = {
@@ -49266,8 +49260,8 @@ var EntrySection = function (_React$Component) {
 
 			var labelStyle = {
 				fontSize: '105%',
-				fontWeight: 'bold',
-				fontFamily: 'Georgia'
+				fontWeight: 'bold'
+				//fontFamily: 'Georgia'
 			};
 
 			var imageDiv = _react2.default.createElement(
@@ -49499,7 +49493,7 @@ var Navbar = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'section',
-				null,
+				{ className: 'elMessiri' },
 				_react2.default.createElement(
 					'nav',
 					{ className: 'navbar navbar-default', style: navStyle },
@@ -49612,7 +49606,8 @@ var TutorialIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 	return {
 		data: store.tutorial.data,
 		error: store.tutorial.error,
-		chapters: store.tutorial.chapters
+		chapters: store.tutorial.chapters,
+		index: store.tutorial.index
 	};
 }), _dec(_class = function (_React$Component) {
 	_inherits(TutorialIndex, _React$Component);
@@ -49622,7 +49617,10 @@ var TutorialIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 
 		var _this = _possibleConstructorReturn(this, (TutorialIndex.__proto__ || Object.getPrototypeOf(TutorialIndex)).call(this, props, context));
 
-		_this.fetchTutorialPage(0);
+		if (!_this.props.index) _this.fetchTutorialPage(0);
+		_this.state = {
+			index: _this.props.index
+		};
 		return _this;
 	}
 
@@ -49653,8 +49651,9 @@ var TutorialIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 				backgroundColor: "white"
 			};
 
-			var tableOfContents = _react2.default.createElement(NavbarLeft, { heading: 'Chapters', links: error == null && data != null ? chapters : "" });
-			var pageContent = _react2.default.createElement(_tutorialPage2.default, { title: error == null && data != null ? data.chapter : "", sections: error == null && data != null ? data.sections : "" });
+			var tableOfContents = _react2.default.createElement(NavbarLeft, { heading: 'Chapters', links: error == null && data != null ? chapters : "", onClick: this.fetchTutorialPage.bind(this) });
+			var pageContent = _react2.default.createElement(_tutorialPage2.default, { index: this.props.index, length: chapters != null ? chapters.length : 0, onClick: this.fetchTutorialPage.bind(this),
+				title: error == null && data != null ? data.chapter : "", sections: error == null && data != null ? data.sections : "" });
 
 			var largeBrowserDiv = _react2.default.createElement(
 				'div',
@@ -49758,9 +49757,13 @@ var NavbarTop = function (_React$Component2) {
 				)
 			);
 
+			var divStyle = {
+				fontFamily: "El Messiri, cursive"
+			};
+
 			return _react2.default.createElement(
 				'div',
-				null,
+				{ className: 'elMessiri', style: divStyle },
 				this.state.showLeft ? left : right,
 				this.state.showLeft ? leftChild : rightChild
 			);
@@ -49780,8 +49783,15 @@ var NavbarLeft = function (_React$Component3) {
 	}
 
 	_createClass(NavbarLeft, [{
+		key: 'fetchTutorialPage',
+		value: function fetchTutorialPage(index) {
+			this.props.onClick(index);
+		}
+	}, {
 		key: 'render',
 		value: function render() {
+			var _this4 = this;
+
 			var _props3 = this.props,
 			    heading = _props3.heading,
 			    links = _props3.links;
@@ -49805,7 +49815,7 @@ var NavbarLeft = function (_React$Component3) {
 
 			return _react2.default.createElement(
 				'div',
-				{ style: sectionStyle },
+				{ className: 'elMessiri', style: sectionStyle },
 				_react2.default.createElement(
 					'div',
 					{ style: headingStyle },
@@ -49814,7 +49824,7 @@ var NavbarLeft = function (_React$Component3) {
 				links != "" ? links.map(function (link, index) {
 					return _react2.default.createElement(
 						'div',
-						{ style: linksStyle, key: "linksDiv" + index },
+						{ onClick: _this4.fetchTutorialPage.bind(_this4, index), style: linksStyle, key: "linksDiv" + index },
 						link
 					);
 				}) : ""
@@ -49853,6 +49863,8 @@ var _reactDom = __webpack_require__(19);
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
+var _tutorialActions = __webpack_require__(433);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -49875,7 +49887,10 @@ var TutorialPage = function (_React$Component) {
 		value: function render() {
 			var _props = this.props,
 			    title = _props.title,
-			    sections = _props.sections;
+			    sections = _props.sections,
+			    index = _props.index,
+			    length = _props.length,
+			    onClick = _props.onClick;
 
 
 			var sectionStyle = {
@@ -49884,12 +49899,12 @@ var TutorialPage = function (_React$Component) {
 
 			return _react2.default.createElement(
 				'div',
-				null,
-				_react2.default.createElement(Paginators, { title: title }),
+				{ className: 'elMessiri' },
+				_react2.default.createElement(Paginators, { title: title, index: index, length: length, onClick: onClick }),
 				_react2.default.createElement(
 					'div',
 					{ style: sectionStyle },
-					sections != "" ? sections.map(function (data, index) {
+					sections ? sections.map(function (data, index) {
 						return _react2.default.createElement(Section, { heading: data.heading, body: data.body, key: "Section" + index });
 					}) : ""
 				),
@@ -49915,7 +49930,10 @@ var Paginators = function (_React$Component2) {
 	_createClass(Paginators, [{
 		key: 'dispatchPageDirection',
 		value: function dispatchPageDirection(increment) {
-			//this.props.dispatch(changePage(this.props.pageNumber+increment));
+			var pageNumber = this.props.index + increment;
+			if (pageNumber >= 0 && pageNumber < this.props.length) {
+				this.props.onClick(pageNumber);
+			}
 		}
 	}, {
 		key: 'render',
@@ -50059,29 +50077,21 @@ function reducer() {
 	var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {
 		data: null,
 		error: null,
-		chapters: null
+		chapters: null,
+		index: 0
 	};
 	var action = arguments[1];
 
 
-	var dataArray = [{ chapter: "Execution Context", sections: [{ heading: "Test Heading", body: "Test Body" }] }, { chapter: "Hoisting" }, { chapter: "Functions" }];
-
 	switch (action.type) {
 		case "SELECT_INDEX":
 			{
-				if (action.payload >= 0 && action.payload < dataArray.length) {
-					return _extends({}, state, {
-						data: dataArray[action.payload],
-						error: null,
-						chapters: dataArray.map(function (data) {
-							return data.chapter;
-						})
-					});
-				} else {
-					return _extends({}, state, {
-						error: "index was invalid."
-					});
-				}
+				return _extends({}, state, {
+					data: action.payload.data,
+					error: null,
+					chapters: action.payload.chapters,
+					index: action.payload.index
+				});
 			}
 	}
 	return state;
@@ -50098,10 +50108,44 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 exports.fetchTutorialPage = fetchTutorialPage;
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 function fetchTutorialPage(index) {
+	var dataArray = [{ chapter: "Execution Context", sections: [{ heading: "Lexical Scope", body: "When the source code is run through a compiler, the scope gets defined in the lexing phase, according to where names and variables were authored in the source code - hence the name, lexical scope." }, { heading: "Closures", body: _react2.default.createElement(
+				"div",
+				null,
+				"A function that can remember and access its lexical scope even when that function is executing outside said lexical scope is considered to be a closure.",
+				_react2.default.createElement("br", null),
+				"For example:",
+				_react2.default.createElement("br", null),
+				"Function b = (arg1) => ",
+				"{",
+				_react2.default.createElement("br", null),
+				"\xA0\xA0var a;",
+				_react2.default.createElement("br", null),
+				"\xA0\xA0return function(arg2) console.log(a);",
+				_react2.default.createElement("br", null),
+				" ",
+				"}",
+				_react2.default.createElement("br", null),
+				"var c = b();",
+				_react2.default.createElement("br", null),
+				"c(); //returns a, despite variable a being outside of the lexical scope of function b."
+			) }] }, { chapter: "Hoisting", sections: [{ heading: "Variable Declarations", body: "The JavaScript compiler has been constructed such that variables in the script are hoisted, without content or expressions, above the rest of the script. In other words, it's similar to writing a dictionary with the words first before the definitions. However, variables declared with let are not hoisted." }, { heading: "Function Declaration", body: "On the other hand, function declarations - function example() {} - are also hoisted to the top of the script, but their contents/definitions go along with them. Furthermore, function declarations are hoisted ahead of variable declarations." }, { heading: "Function Expression", body: "But, function declarations - var func = () => {} - are called in-line." }, { heading: "Function Scoping", body: "The lexical scope of a function is the content within its brackets, i.e., function foo() {scope}." }, { heading: "Block Scoping", body: "Not to be confused, the scope within if, while, and for statements are considered block scopes. These statements share their scope with the global scope unless the variables were instantiated with const or let." }] }, { chapter: "Functions" }];
 	return {
 		type: "SELECT_INDEX",
-		payload: index
+		payload: {
+			data: dataArray[index],
+			chapters: dataArray.map(function (data) {
+				return data.chapter;
+			}),
+			index: index
+		}
 	};
 }
 

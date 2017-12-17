@@ -32,7 +32,7 @@ export default class NavDescription extends React.Component {
 			fontSize: "2em",
 			fontWeight: "700",
 			backgroundColor: "transparent",
-			textShadow: "1px 1px white",
+			//textShadow: "1px 1px white",
 		};
 		return (
 			<div style={divStyle} className={"col-xs-"+col}>

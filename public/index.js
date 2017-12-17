@@ -16,7 +16,7 @@ const App = createReactClass({
 		const navStyle = {
 			color: "white",
 			border: "0",
-			fontFamily: "arial",
+			//fontFamily: "arial",
 			fontSize: "2em"
 		};
 		const navActiveStyle = {

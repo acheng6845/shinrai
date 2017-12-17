@@ -25,7 +25,7 @@ export default class Entry extends React.Component {
 		const labelStyle = {
 			fontSize: '100%',
 			fontWeight: 'bold',
-			fontFamily: 'Georgia',
+			//fontFamily: 'Georgia',
 			textAlign: 'center'
 		};
 
@@ -108,7 +108,7 @@ export default class Entry extends React.Component {
 		const url = '../../images/Extracted/MONS_'+zeroes+monster.number+'.PNG';
 
 		return (
-			<div className='row' style={{color: 'white'}}>
+			<div className='row elMessiri' style={{color: 'white'}}>
 				<div className='hidden-xs hidden-sm hidden-md hidden-lg col-md-5 col-lg-4' style={{marginBottom: '5%'}}>
 					<MonsterBook />
 				</div>

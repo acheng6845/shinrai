@@ -67,12 +67,12 @@ export default class QuoteSlider extends React.Component {
 			position: "relative",
 			fontSize: "1em",
 			color: "white",
-			textShadow: "2px 2px black",
+			//textShadow: "2px 2px black",
 			textAlign: position,
 			//marginTop: title.top,
 			display: "none",
 			//left: title.left != null ? title.left : "0%",
-			top: "10vh",
+			top: "8vh",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
 			whiteSpace: "nowrap",
@@ -87,7 +87,7 @@ export default class QuoteSlider extends React.Component {
 			//marginTop: body.top,
 			display: "none",
 			//left: body.left != null ? body.left : "0%",
-			top: "15vh",
+			top: "12vh",
 			fontWeight: "700",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
@@ -103,7 +103,7 @@ export default class QuoteSlider extends React.Component {
 			//marginTop: end.top,
 			display: "none",
 			//left: end.left != null ? end.left : "0%",
-			top: "18vh",
+			top: "15vh",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
 			whiteSpace: isSmall ? "wrap" : "nowrap",
@@ -122,16 +122,16 @@ export default class QuoteSlider extends React.Component {
 		const linkStyle = {
 			position: "relative",
 			textAlign: position,
-			top: "23vh",
+			top: "18vh",
 			fontSize: "20px",
 			fontWeight: "700",
-			textShadow: "2px 2px black",
+			textShadow: "1px 1px silver",
 			display: "none"
 		};
 
 		const buttonStyle = {
 			display: "none",
-			backgroundColor: "hotpink",
+			backgroundColor: "#AFEEEE",
 			paddingLeft: "2em",
 			paddingRight: "2em",
 			paddingTop: "1em",
@@ -188,7 +188,7 @@ class LinkButton extends React.Component {
 
 		this.state = {
 			color: "white",
-			backgroundColor: "hotpink",
+			backgroundColor: "#AFEEEE",
 		};
 	}
 
@@ -203,18 +203,16 @@ class LinkButton extends React.Component {
 	}
 
 	onHover() {
-		console.log("Hovering");
 		this.setState({
-			color: "hotpink",
+			color: "#AFEEEE",
 			backgroundColor: "white",
 		});
 	}
 
 	onMouseLeave() {
-		console.log("Leaving");
 		this.setState({
 			color: "white",
-			backgroundColor: "hotpink",
+			backgroundColor: "#AFEEEE",
 		});
 	}
 
@@ -229,6 +227,7 @@ class LinkButton extends React.Component {
 			paddingLeft: "40px",
 			paddingRight: "40px",
 			borderRadius: "35%",
+			border: "2px solid silver",
 		};
 
 		return (

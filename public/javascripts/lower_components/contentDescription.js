@@ -15,13 +15,11 @@ export default class ContentDescription extends React.Component {
 		const titleStyle = {
 			textAlign: 'center',
 			fontSize: (fontSize*1.5)+'vmin',
-			fontFamily: 'Abril Fatface, cursive',
 			color: fontColor,
 			textShadow: '4px 4px '+(fontColor != 'black' ? 'black' : 'white'),
 		};
 
 		const descriptionStyle = {
-			fontFamily: 'Abril Fatface, cursive',
 			color: fontColor,
 			fontSize: fontSize+'vmin',
 			textShadow: '4px 4px '+(fontColor != 'black' ? 'black' : 'white'),
@@ -31,7 +29,7 @@ export default class ContentDescription extends React.Component {
 			textAlign: 'center'
 		};
 		return (
-			<div>
+			<div className="smythe">
 				<div className='row' style={titleStyle}>{title}</div>
 				<div className='row' style={descriptionStyle}>{description}</div>
 				<div className='row'>

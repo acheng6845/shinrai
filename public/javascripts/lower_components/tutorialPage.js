@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { fetchTutorialPage } from '../actions/tutorialActions';
 
 export default class TutorialPage extends React.Component {
 	constructor(props, context) {
@@ -7,17 +8,17 @@ export default class TutorialPage extends React.Component {
 	}
 
 	render() {
-		const { title, sections } = this.props;
+		const { title, sections, index, length, onClick } = this.props;
 
 		const sectionStyle = {
 			marginBottom: "5vh",
 		};
 
 		return (
-			<div>
-				<Paginators title={title} />
+			<div className="elMessiri">
+				<Paginators title={title} index={index} length={length} onClick={onClick} />
 				<div style={sectionStyle}>
-					{sections != "" ? sections.map((data, index) => <Section heading={data.heading} body={data.body} key={"Section"+index} />) : ""}
+					{sections ? sections.map((data, index) => <Section heading={data.heading} body={data.body} key={"Section"+index} />) : ""}
 				</div>
 				<Paginators />
 			</div>
@@ -31,7 +32,10 @@ class Paginators extends React.Component {
 	}
 
 	dispatchPageDirection(increment) {
-		//this.props.dispatch(changePage(this.props.pageNumber+increment));
+		const pageNumber = this.props.index+increment;
+		if(pageNumber >= 0 && pageNumber < this.props.length) {
+			this.props.onClick(pageNumber);
+		}
 	}
 
 	render() {
@@ -65,7 +69,7 @@ class Paginators extends React.Component {
 			top: "3px",
 		};
 		const sectionStyle = {
-		
+			
 		};
 		return (
 			<div className="row" style={sectionStyle}>

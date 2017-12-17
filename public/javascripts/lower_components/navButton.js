@@ -22,13 +22,14 @@ export default class NavButton extends React.Component {
 		const buttonStyle = {
 			//backgroundColor: active ? "hotpink" : "skyblue",
 			backgroundColor: "transparent",
-			border: "2px double "+(active ? "hotpink" : "silver"),
+			border: "2px double "+(active ? "#40E0D0" : "silver"),
 			borderRadius: "50%",
 			height: "50px",
 			width: "50px",
 			backgroundImage: image != null ? "url("+image+")" : null,
-			color: "white",
-			textShadow: "1px 1px black",
+			color: "black",
+			fontWeight: "300",
+			//textShadow: "1px 1px black",
 		};
 
 		return (
