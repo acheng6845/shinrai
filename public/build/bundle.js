@@ -18593,6 +18593,10 @@ var _tutorialIndex = __webpack_require__(430);
 
 var _tutorialIndex2 = _interopRequireDefault(_tutorialIndex);
 
+var _aboutMe = __webpack_require__(434);
+
+var _aboutMe2 = _interopRequireDefault(_aboutMe);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var App = (0, _createReactClass2.default)({
@@ -18631,6 +18635,7 @@ var App = (0, _createReactClass2.default)({
 					null,
 					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/games', component: _shinraiIndex2.default }),
+					_react2.default.createElement(_reactRouterDom.Route, { path: '/about', component: _aboutMe2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/pad', component: _monsterBook2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/padunit', component: _entry2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: '/tutorial', component: _tutorialIndex2.default })
@@ -50148,6 +50153,110 @@ function fetchTutorialPage(index) {
 		}
 	};
 }
+
+/***/ }),
+/* 434 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = undefined;
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(1);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(19);
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var AboutMe = function (_React$Component) {
+	_inherits(AboutMe, _React$Component);
+
+	function AboutMe(props, context) {
+		_classCallCheck(this, AboutMe);
+
+		return _possibleConstructorReturn(this, (AboutMe.__proto__ || Object.getPrototypeOf(AboutMe)).call(this, props, context));
+	}
+
+	_createClass(AboutMe, [{
+		key: 'render',
+		value: function render() {
+
+			var leftStyle = {
+				textAlign: "center",
+				fontSize: "2em",
+				marginTop: "7vh",
+				color: "black"
+			};
+			var rightStyle = {
+				textAlign: "center",
+				marginTop: "5vh",
+				fontSize: "1.5em"
+			};
+			var imgStyle = {
+				height: "200px",
+				width: "auto",
+				border: "1px solid black"
+			};
+
+			var description = _react2.default.createElement(
+				'p',
+				null,
+				'Hello world, my name is Aaron Cheng, a modest software developer',
+				_react2.default.createElement('br', null),
+				'who had some time on his hands!',
+				_react2.default.createElement('br', null),
+				'But, in order to make that time productive, I decided that developing a website could help to deepen my knowledge of the field in a practical environment.',
+				_react2.default.createElement('br', null),
+				'So, ta-da! Through earnest curiosity and diligence, this site came to life.'
+			);
+			var links = _react2.default.createElement(
+				'ul',
+				null,
+				_react2.default.createElement(
+					'a',
+					{ href: 'https://www.linkedin.com/in/aaron-cheng-48752ab2/' },
+					'LinkedIn \xA0\xA0\xA0\xA0'
+				)
+			);
+
+			return _react2.default.createElement(
+				'div',
+				{ className: 'elMessiri' },
+				_react2.default.createElement(
+					'div',
+					{ style: leftStyle, className: 'col-xs-8' },
+					description
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: rightStyle, className: 'col-xs-4' },
+					_react2.default.createElement('img', { style: imgStyle, src: '/images/linkedin.jpg' }),
+					links
+				)
+			);
+		}
+	}]);
+
+	return AboutMe;
+}(_react2.default.Component);
+
+exports.default = AboutMe;
 
 /***/ })
 /******/ ]);

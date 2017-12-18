@@ -10,6 +10,7 @@ import MonsterBook from './javascripts/higher_components/monsterBook';
 import Entry from './javascripts/higher_components/entry';
 import Navbar from './javascripts/lower_components/shinraiNavbar';
 import TutorialIndex from './javascripts/higher_components/tutorialIndex';
+import AboutMe from './javascripts/higher_components/aboutMe';
 
 const App = createReactClass({
 	render() {
@@ -33,6 +34,7 @@ const App = createReactClass({
 					<div>
 						<Route exact path='/' component={TrueIndex} />
 						<Route path='/games' component={IndexPage} />
+						<Route path='/about' component={AboutMe} />
 						<Route path='/pad' component={MonsterBook} />
 						<Route path='/padunit' component={Entry} />
 						<Route path='/tutorial' component={TutorialIndex} />
