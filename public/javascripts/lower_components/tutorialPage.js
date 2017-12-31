@@ -20,7 +20,7 @@ export default class TutorialPage extends React.Component {
 				<div style={sectionStyle}>
 					{sections ? sections.map((data, index) => <Section heading={data.heading} body={data.body} key={"Section"+index} />) : ""}
 				</div>
-				<Paginators />
+				<Paginators index={index} onClick={onClick} length={length} />
 			</div>
 		);
 	}
@@ -48,6 +48,7 @@ class Paginators extends React.Component {
 			//textShadow: "1px 1px white",
 			top: "5px",
 			fontWeight: "500",
+			cursor: "pointer",
 		};
 		const paginatorRighttStyle = {
 			fontSize: "1.5em",
@@ -56,6 +57,7 @@ class Paginators extends React.Component {
 			//textShadow: "1px 1px white",
 			top: "5px",
 			fontWeight: "500",
+			cursor: "pointer",
 		};
 		const titleStyle = {
 			fontSize: "2em",

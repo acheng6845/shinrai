@@ -46,7 +46,7 @@ export default class TutorialIndex extends React.Component {
 			backgroundColor: "white",
 		};
 
-		const tableOfContents = <NavbarLeft heading="Chapters" links={error == null && data != null ? chapters : ""} onClick={this.fetchTutorialPage.bind(this)}/>;
+		const tableOfContents = <NavbarLeft heading="Chapters" links={error == null && data != null ? chapters : ""} index={this.props.index} onClick={this.fetchTutorialPage.bind(this)}/>;
 		const pageContent = <TutorialPage index={this.props.index} length={chapters != null ? chapters.length : 0} onClick={this.fetchTutorialPage.bind(this)}
 			title={error == null  && data != null ? data.chapter : ""} sections={error == null && data != null ? data.sections : ""} />;
 		
@@ -152,7 +152,7 @@ class NavbarLeft extends React.Component {
 
 	render() {
 
-		const { heading, links } = this.props;
+		const { heading, links, index } = this.props;
 		const sectionStyle = {
 			textAlign: "center",
 		};
@@ -168,12 +168,14 @@ class NavbarLeft extends React.Component {
 			fontSize: "1.2em",
 			textShadow: "1px 1px white",
 			color: "black",
-		};
+			cursor: "pointer",
+		};http://localhost:3000/
 
 		return (
 			<div className="elMessiri" style={sectionStyle}>
 				<div style={headingStyle}>{heading}</div>
-				{links != "" ? links.map((link, index) => <div onClick={this.fetchTutorialPage.bind(this, index)} style={linksStyle} key={"linksDiv"+index}>{link}</div>) : ""}
+				{links != "" ? links.map((link, i) => 
+					<div onClick={this.fetchTutorialPage.bind(this, i)} style={{...linksStyle, color: index == i ? "maroon" : "black"}} key={"linksDiv"+i}>{link}</div>) : ""}
 			</div>
 		);
 	}

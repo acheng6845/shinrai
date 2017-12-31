@@ -123,7 +123,7 @@ export default class IndexPage extends React.Component {
 						<ContentDescription title={this.state.contentSelected != null ? descriptions[this.state.contentSelected].title : ''}
 							description={this.state.contentSelected != null ? descriptions[this.state.contentSelected].description[this.state.descriptionSelected] : ''}
 							fontSize={style.x} fontColor={this.state.contentSelected != null ? descriptions[this.state.contentSelected].fontColor : 'black'}
-							link={this.state.contentSelected != null && this.state.descriptionSelected == 1 ? descriptions[this.state.contentSelected].link : ''} />
+							link={this.state.contentSelected != null ? descriptions[this.state.contentSelected].link : ''} />
 					</div>
 				);
 			},

@@ -54,12 +54,13 @@ if (app.get('env') === 'development') {
     });
   });
   var mongoOptions = {
-    server: {socketOptions: {
+    useMongoClient: true,
+    /*server: {socketOptions: {
       keepAlive: 300000, connectTimeoutMS: 30000
     }},
     replset: {socketOptions: {
       keepAlive: 300000, connectTimeoutMS: 30000
-    }}
+    }}*/
   };
   if(process.env.MONGODB_URI) {
     mongoose.connect(process.env.MONGODB_URI, mongoOptions);

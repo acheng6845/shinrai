@@ -18,5 +18,14 @@ module.exports = {
 			loaders: ['babel-loader?presets[]=react,presets[]=es2015,presets[]=stage-0,plugins[]=transform-class-properties,plugins[]=transform-decorators-legacy']
 		}
 		]
-	}
+	},
+	plugins: process.env.NODE_ENV === 'production' ?
+		[
+			new webpack.optimize.CommonsChunkPlugin({
+				name: 'vendor',
+				children: true,
+				minChunks: 2,
+				async: true,
+			})
+		] : []
 };
