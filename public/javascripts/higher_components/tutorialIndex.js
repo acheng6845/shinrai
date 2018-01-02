@@ -38,6 +38,7 @@ export default class TutorialIndex extends React.Component {
 		};
 		const tableStyle = {
 			borderRight: "1px dotted black",
+			borderBottom: "1px dotted black",
 			height: "90vh",
 			backgroundColor: "#eee",
 		};
@@ -169,7 +170,7 @@ class NavbarLeft extends React.Component {
 			textShadow: "1px 1px white",
 			color: "black",
 			cursor: "pointer",
-		};http://localhost:3000/
+		};
 
 		return (
 			<div className="elMessiri" style={sectionStyle}>

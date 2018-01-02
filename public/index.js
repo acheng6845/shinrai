@@ -25,12 +25,15 @@ const App = createReactClass({
 		};
 		const centerContent = [
 			<NavLink to="/tutorial"  style={{...navStyle, marginLeft: "35vw"}} activeStyle={navActiveStyle}>Lessons</NavLink>,
-			<NavLink to="/games" style={navStyle} activeStyle={navActiveStyle}>Games</NavLink>,
+			<NavLink to="/pad" style={navStyle} activeStyle={navActiveStyle}>Games</NavLink>,
 			<NavLink to="/about" style={navStyle} activeStyle={navActiveStyle}>About Me</NavLink>
+		];
+		const rightContent = [
+			<a style={{...navActiveStyle, border: "none"}} href="https://github.com/acheng6845/shinrai">GitHub</a>
 		];
 		return (
 			<BrowserRouter>
-				<Navbar padding="1%" centerContent={centerContent} brand="Aaron's Portfolio">
+				<Navbar padding="1%" centerContent={centerContent} brand="Aaron's Portfolio" rightContent={rightContent}>
 					<div>
 						<Route exact path='/' component={TrueIndex} />
 						<Route path='/games' component={IndexPage} />

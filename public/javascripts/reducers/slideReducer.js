@@ -21,7 +21,7 @@ export default function reducer(state={
 			topImage: "chen.png",
 			bottomImage: "gong.png",
 			artist: "Anonymous",
-			link: "/games",
+			link: "/pad",
 		},
 		{
 			backgroundImage: "waves.png",
