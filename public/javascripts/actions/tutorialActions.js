@@ -63,16 +63,18 @@ export function fetchTutorialPage(index) {
 			{heading: "Async/Await Explanation", body: "A function denoted by the async keyword inherently becomes a promise where the resolve value is the function's return value. Meanwhile, await can only be called within an async function where the promise (getJSON in this case) will be waited to resolve before being printed to the console."}
 		]},
 		{chapter: "Selecting or Finding Nodes", sections: [
-			{heading: "CSS Selectors", body: "document.querySelector(CSS selectors) or document.querySelectorAll(CSS Selectors)"},
-			{heading: "CSS Selectors List", body: (<div>.example = elements with class='example'<br/>#name = elements with id='name'<br />* = all elements<br/>p = paragraph elements<br/>p, div = paragraph and div elements<br/>div p = paragraph elements within div elements<br/>div > p = paragraph elements with parents are div elements<br/>div + p = paragraph elements placed immediately after div elements<br/>p ~ ul = ul elements preceded by a paragraph element<br/>[attr] = elements with attr attribute<br/>[attr=x] = elements with attr attribute equal to x<br/>[attr~=x] = elements with attr attribute containing the word 'x'<br/>[attr|=x] = elements with an attr attribute value starting with 'x'<br/>a[href^='x'] = a elements with href attribute value beginning with 'x'<br/>a[href$='x'] = a elements with href attribute value ending with 'x'<br/>a[href*='x'] = a elements with href attribute value containing substring 'x'<br/>a:active = active link<br/>p::after/before = insert something after/before each paragraph element<br/>input:checked/disabled/enabled = every checked/disabled/enabled input element<br/>x:empty = every x element with no children</div>)}
-		]}/*,
+			{heading: "CSS Selectors", body: "Non-Live Results: document.querySelector(CSS selectors)/DFS, document.querySelectorAll(CSS Selectors), element.matches(CSS Selectors) === true, element.querySelector(CSS Selectors). Live Results: document.getElementByTagName, document.getElementById"},
+			{heading: "CSS Selectors List", body: (<div>.example = elements with class='example'<br/>#name = elements with id='name'<br />* = all elements<br/>p = paragraph elements<br/>p, div = paragraph and div elements<br/>div p = paragraph elements within div elements<br/>div > p = paragraph elements with parents are div elements<br/>div + p = paragraph elements placed immediately after div elements<br/>p ~ ul = ul elements preceded by a paragraph element<br/>[attr] = elements with attr attribute<br/>[attr=x] = elements with attr attribute equal to x<br/>[attr~=x] = elements with attr attribute containing the word 'x'<br/>[attr|=x] = elements with an attr attribute value starting with 'x'<br/>a[href^='x'] = a elements with href attribute value beginning with 'x'<br/>a[href$='x'] = a elements with href attribute value ending with 'x'<br/>a[href*='x'] = a elements with href attribute value containing substring 'x'<br/>a:active/hover/link/visited = active/hovered/unvisited/visited link<br/>p::after/before = insert something after/before each paragraph element<br/>input:checked/disabled/enabled/focus/optional/read-only/read-write/required = every checked/disabled/enabled/focused/optional/read-only/read-write/required input element<br/>input:in-range/out-of-range/invalid/valid = every input element where the value is in-range/out-of-range/invalid/valid<br/>x:empty = every x element with no children<br/>p:first-child/last-child/nth-child(n)/nth-last-child(n) = every paragraph element which is its parent's first/last/nth/nth-from-last child<br/>p::first-letter/line = selects the first letter/line of every paragraph element<br/>p:first-of-type/last-of-type/nth-of-type(n)/nth-last-of-type(n) = every paragraph element that is the first/last/nth/nth-from-last paragraph element child of its parent<br/>p:only-of-type/only-child = every paragraph element that is the only paragraph element/child of its parent<br/>p:lang(language) = every paragraph element with a lang attribute equal to the language<br/>:not(selector) = every element that does not match the selector<br/>:root = document's root element<br/>::selection = portion of element selected by a user<br/>#id:target = current active #id element</div>)}
+		]},
 		{chapter: "DOM Traversal and Manipulation", sections: [
-			{heading: "", body: ""}
+			{heading: "Traversal Up and Down", body: (<div>node.parentNode - returns parent Node<br/>node.firstChild - returns first child<br/>node.lastChild - returns last child<br/>node.childNodes - returns array of children nodes</div>)},
+			{heading: "Traversal Left and Right", body: (<div>node.previousSibling - returns previous sibling node<br/>node.nextSibling - returns next sibling node</div>)},
+			{heading: "Manipulation", body: (<div>Adding Nodes: element.append(node), element.prepend(node), element.appendTo("targetElement"), element.prependTo("targetElement"), element.before(CSS Selectors), element.after(CSS Selectors), element.insertBefore(CSS Selectors), element.insertAfter(CSS Selectors)<br/>Removing Nodes: $(CSS Selectors).remove(), $(CSS Selectors).detach() - keeps data/events, $(CSS Selectors).empty() - removes children and content<br/>Replacing Nodes: $(CSS Selectors).replaceWith(node), $(node).replaceAll(CSS Selectors)<br/>Copying Nodes: $(CSS Selectors).clone(true/false) - returns cloned elements with/without event handlers copied<br/>Creating Nodes: document.createElement("element"), document.createTextNode(String)<br/>Changing Text Content: $(CSS Selectors).html(HTML/Text node), $(CSS Selectors).text(Text node)<br/>Toggling: $(CSS Selectors).toggleClass(className)<br/>Removing or Adding Class Names: $(CSS Selectors).removeClass(className), $(CSS Selectors).addClass(className)</div>)}
 		]},
 		{chapter: "Performance", sections: [
-			{heading: "Document Fragments", body: ""},
-			{heading: "Node Caching", body: ""}
-		]},
+			{heading: "Document Fragments", body: (<div>Document Fragments are a way to manipulate the DOM without interacting with the live/visible DOM until the end.<br/>Example:<br/>const fragment = document.createDocumentFragment();<br/>var listItem = document.createElement("li");<br/>fragment.appendChild(listItem);<br/>document.querySelector("ul").appendChild(fragment);</div>)},
+			{heading: "Node Caching", body: (<div>Another technique to increase DOM Manipulation perforamnce is to cache the results of a query.<br/>Example:<br/>const $id = document.getElementById('id');<br/>$id.append(node);</div>)}
+		]},/*
 		{chapter: "CSS", sections: [
 			{heading: "Layout", body: ""},
 			{heading: "Responsive Design", body: ""},
@@ -82,10 +84,17 @@ export function fetchTutorialPage(index) {
 		]},
 		{chapter: "HTML", sections: [
 			{heading: "", body: ""}
-		]},
+		]},*/
 		{chapter: "System Design", sections: [
-			{heading: "Rendering", body: ""}
-		]}*/
+			{heading: "Rendering", body: (<div>Client Side (CSR): The advantages of client side rendering are that it's excellent for rendering web applications, there are plenty of powerful JavaScript libraries and frameworks to choose from, rendering is extremely fast since the duplicate content doesn't have to be reloaded, and it is possible to create rich user interactions. Its downfalls come with extra implementation complexities to attain good Search Engine Optimizations, the requirement of external libraries, and a possibly long initial load time.<br/>Server Side (SSR): On the other hand, server side rendering allows for better SEO and quick initial load times, which is great for static sites. However, that also means that the server must receive multiple requests and deliver responses for each page, thus, pages will need to be re-rendered fully, creating a slowed process. Furthermore, without a JavaScript library, it's difficult to create fulfilling user interactions.<br/>Universal Rendering: With React, universal rendering is where the server renders the react components and sends the result as HTML to the browser with the initial load. Then, the client takes over and re-renders the component as well as further rendering needs. This is only possible when the server understands JSX elements through modules like Babel (with or without webpack). Doing so allows for the web application to have good SEO while also fast and powerful rendering; however, universal rendering also introduces extra complexities and extra maintanence requirements that may not justify the improvements universal rendering brings.</div>)},
+			//{heading: "Layout", body: ""},
+			{heading: "State Management", body: (<div>Unidirectional<br/>Two-Way Data Binding<br/>Passive Programming Model<br/>Reactive Programming Model</div>)},
+			{heading: "Asynchronous Flow", body: (<div>XHR<br/>Bidirectional flow<br/>Older browsers: XHR<br/>Script Tags<br/>Hidden iFrames</div>)},
+			{heading: "Separation of Concerns", body: (<div>MVC<br/>MVVM<br/>MVP</div>)},
+			{heading: "Multi-Device Support", body: ""},
+			{heading: "Asset Delivery", body: ""}
+
+		]}
 	];
 	return {
 		type: "SELECT_INDEX",

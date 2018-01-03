@@ -18579,7 +18579,7 @@ function fetchTutorialPage(index) {
 				"var c = b();",
 				_react2.default.createElement("br", null),
 				"c(); //returns a, despite variable a being outside of the lexical scope of function b."
-			) }] }, { chapter: "Hoisting", sections: [{ heading: "Variable Declarations", body: "The JavaScript compiler has been constructed such that variables in the script are hoisted, without content or expressions, above the rest of the script. In other words, it's similar to writing a dictionary with the words first before the definitions. However, variables declared with let are not hoisted." }, { heading: "Function Declaration", body: "On the other hand, function declarations - function example() {} - are also hoisted to the top of the script, but their contents/definitions go along with them. \nFurthermore, function declarations are hoisted ahead of variable declarations and can be overridden, i.e., duplicates after the first are ignored." }, { heading: "Function Expression", body: "But, function declarations - var func = () => {} - are called in-line." }, { heading: "When to Use Either?", body: "Generally, function expressions allow for less surprises and more flexibility, yet they come at the price of being anonymous functions for debuggers. \nA workaround for this on newer browsers would be to use: var foo = function bar() {return 'foobar'};" }, { heading: "Function Scoping", body: "The lexical scope of a function is the content within its brackets, i.e., function foo() {scope}." }, { heading: "Block Scoping", body: "Not to be confused, the scope within if, while, and for statements are considered block scopes. These statements share their scope with the global scope unless the variables were instantiated with const or let." }] }, { chapter: "Binding", sections: [{ heading: "Call", body: "Ex.: Arrays.prototype.slice.call(object, ...parameter)." }, { heading: "Apply", body: "Ex.: Arrays.prototype.slice.apply(object, [parameters])." }, { heading: "Bind", body: "Ex.: var x = multipleArgFunction.bind(null, x, y, z)." }, { heading: "Lexical This", body: "Lexical this essentially refers to the scope of the object." }] }, { chapter: "Objects", sections: [{ heading: "Prototypes", body: "Object prototypes are essentially defined to be from where JavaScript Objects inherit their properties and methods.\nTo add properties to an object, it's simply object.property = x; however, for prototypes, the property must be added to the constructor function or through Object.prototype.property = x." }, { heading: "Constructors", body: "Ex.: function Foo(a,b,c) {\nthis.aProperty = a;\nthis.bProperty = b;\nthis.cProperty = c;\n}\nThis would be the basic constructor for a Foo object prototype. Take note that the name starts with a capital letter." }, { heading: "Mixins", body: "Then, there is the middleground between delegations (call, apply) and inheritance called mixins. These allow for entire functional units to be borrowed and accessed with minimal syntax. Generally, these are classes that define a set of functions relating to a type, usually considered abstract, for their functions to then be borrowed by more concrete classes." }, { heading: "Mixins - Archaic Logic", body: "An old methodology for constructing mixins utilizes extend functions to copy mixin functions into receiving objects. \nFunction extend(destination, source) {\n for(var element in source) {\n if(source.hasOwnProperty(element)) {\n destination[element] = source[element];\n}}}\nextend(Obj.prototype, mixinObj);" }, { heading: "Mixins - Functional Logic", body: "var asCircle = function() { this.area = () => {return Math.PI * this.radius * this.radius}; return this; var circle = function(radius) { this.radius = radius; }; asCircle.call(Circle.prototype); var circle1 = new Circle(5); circle1.area();" }, { heading: "Mixins - Functional with Options", body: "var asOval = (options) => { this.grow = () => { this.shortRadius += options.growBy; }; this.shrinks = () => { this.shortRadius -= options.shrinkBy;}; return this; }; var Oval = (shortRadius) => {this.shortRadius = shortRadius;}; asOval.call(Oval.prototype, {growBy: 2, shrinkBy: 2}); " }, { heading: "Mixins - Functional with Caching and Closure", body: "var asRectangle = (function(){ function area() {return this.length * this.width;} return function() {this.area = area; return this;} })(); var Rectangle = (length, width) => {this.length = length; this.width = width;}; asRectangle.call(Rectangle.prototype);" }, { heading: "Mixins - Functional and Options with Currying", body: "function.prototype.curry = () => { var fn = this; var args = [].slice.call(arguments, 0); return () => { return fn.apply(this, args.concat([].slice.call(arguments, 0))); }} var asRectangle = (function() { function grow(growBy) { this.length += growBy, this.width += growBy; } return (options) => { this.grow = grow.curry(options['growBy']); return this; }})(); asRectangle.call(Rectangle.prototype, {growBy: 2}); " }] }, { chapter: "Function Composition", sections: [{ heading: "Introduction", body: "In math, function compositions are defined as f o g or f(g(x)). Similarly, function compositions in JavaScript can be expressed through cascading functions, but in reverse. For example, foo(bar(x)) would be written as bar(x).foo(y -> y)." }, { heading: "Currying", body: "A cleaner implementation of function compositions would be through a technique called currying. This is where functions with multiple arguments, through the use of closures, can be inputted each argument separately, or reduced, before finally executing. For example: add = (a, b) => return a + b; curriedAdd = (a) => { return (b) => add(a, b); }." }, { heading: "Uncurrying", body: "In order to uncurry or to retrieve the multiple argument function, simply input all of the arguments into the curry function. Ex.: curriedAdd = (a) => (b) => return a + b; add = (a,b) => curriedAdd(a)(b);" }, { heading: "How is Curry Used?", body: "JavaScript's Function prototype's bind method implements currying, i.e., multiply = multiply.bind(null, 3); multiply(2) // returns 6. Furthermore, the React-Redux connect method utilizes currying to map the states to the props in a component. Lastly, event handlers are another application of currying." }, { heading: "Pipe", body: "Another implementation of function compositions can be through pipes, which would be similar in application to function chaining." }, { heading: "Higher Order Functions", body: "Higher Order Functions are functions that can take another function as an argument or return a function. As such, currying can be used to generate higher order functions." }] }, { chapter: "Event Handling", sections: [{ heading: "Event Delegation", body: "Since events bubble upward from children nodes to parents, it's possible to use parent components to delegate event responses according to the triggered node's properties." }, { heading: "Event Delegation Example", body: "document.getElementById('list').addEventListener('click', (e) => { if(e.target && e.target.nodeName == 'li') alert('list item', e.target.id.replace('post', ''), 'was clicked!')});" }, { heading: "Event Bubbling", body: "Event bubbling can also be stopped by including this method in the event handler: (e) => {event.stopPropagation()}; " }] }, { chapter: "Type Coercion", sections: [{ heading: "Data Types", body: "The different data types in JavaScript are: string, number, boolean, object, function, null, and undefined." }, { heading: "Objects", body: "Then, the objects in JavaScript are Object, Date, and Array." }, { heading: "typeof", body: "The typeof method would return the data type of a variable; however, the exceptions are that NaN returns number, array.date.null returns an object, and undefined returns undefined." }, { heading: "instanceof", body: "This method returns a boolean value denoting whether a variable is an instance of the designated Object. Comparisons are done by comparing Object.getPrototypeOf(o) to Object.prototype." }, { heading: "toString", body: "Another method for determining type coercion is through Object.prototype.toString.call(o) which returns a string, [object ObjectName]. The reason that toString cannot be called directly onto an object o is that Strings, Numbers, Arrays, and Date override the Object's toString method." }] }, { chapter: "Handling Asynchronous Calls", sections: [{ heading: "Callbacks", body: "var a = (args, callbackFunction) => {} " }, { heading: "Promises", body: "new Promise((resolveFunction, rejectFunction)) => {}); Promise.then(onFulfilled?: Function, onRejected?: Function) => Promise" }, { heading: "Promise Chaining", body: "fetch(url).then(process).then(save).catch(handleErrors);" }, { heading: "Async/Await", body: "An alternative to the prevalent promises and callbacks in writing asynchronous code are async/await which is a layer built on top of promises. While async/await are non-blocking like promises, they help to transform asynchronous code into cleaner synchronous-like code. Example code: const exampleAction = async () => { console.log(await getJSON()); return true; }" }, { heading: "Async/Await Explanation", body: "A function denoted by the async keyword inherently becomes a promise where the resolve value is the function's return value. Meanwhile, await can only be called within an async function where the promise (getJSON in this case) will be waited to resolve before being printed to the console." }] }, { chapter: "Selecting or Finding Nodes", sections: [{ heading: "CSS Selectors", body: "document.querySelector(CSS selectors) or document.querySelectorAll(CSS Selectors)" }, { heading: "CSS Selectors List", body: _react2.default.createElement(
+			) }] }, { chapter: "Hoisting", sections: [{ heading: "Variable Declarations", body: "The JavaScript compiler has been constructed such that variables in the script are hoisted, without content or expressions, above the rest of the script. In other words, it's similar to writing a dictionary with the words first before the definitions. However, variables declared with let are not hoisted." }, { heading: "Function Declaration", body: "On the other hand, function declarations - function example() {} - are also hoisted to the top of the script, but their contents/definitions go along with them. \nFurthermore, function declarations are hoisted ahead of variable declarations and can be overridden, i.e., duplicates after the first are ignored." }, { heading: "Function Expression", body: "But, function declarations - var func = () => {} - are called in-line." }, { heading: "When to Use Either?", body: "Generally, function expressions allow for less surprises and more flexibility, yet they come at the price of being anonymous functions for debuggers. \nA workaround for this on newer browsers would be to use: var foo = function bar() {return 'foobar'};" }, { heading: "Function Scoping", body: "The lexical scope of a function is the content within its brackets, i.e., function foo() {scope}." }, { heading: "Block Scoping", body: "Not to be confused, the scope within if, while, and for statements are considered block scopes. These statements share their scope with the global scope unless the variables were instantiated with const or let." }] }, { chapter: "Binding", sections: [{ heading: "Call", body: "Ex.: Arrays.prototype.slice.call(object, ...parameter)." }, { heading: "Apply", body: "Ex.: Arrays.prototype.slice.apply(object, [parameters])." }, { heading: "Bind", body: "Ex.: var x = multipleArgFunction.bind(null, x, y, z)." }, { heading: "Lexical This", body: "Lexical this essentially refers to the scope of the object." }] }, { chapter: "Objects", sections: [{ heading: "Prototypes", body: "Object prototypes are essentially defined to be from where JavaScript Objects inherit their properties and methods.\nTo add properties to an object, it's simply object.property = x; however, for prototypes, the property must be added to the constructor function or through Object.prototype.property = x." }, { heading: "Constructors", body: "Ex.: function Foo(a,b,c) {\nthis.aProperty = a;\nthis.bProperty = b;\nthis.cProperty = c;\n}\nThis would be the basic constructor for a Foo object prototype. Take note that the name starts with a capital letter." }, { heading: "Mixins", body: "Then, there is the middleground between delegations (call, apply) and inheritance called mixins. These allow for entire functional units to be borrowed and accessed with minimal syntax. Generally, these are classes that define a set of functions relating to a type, usually considered abstract, for their functions to then be borrowed by more concrete classes." }, { heading: "Mixins - Archaic Logic", body: "An old methodology for constructing mixins utilizes extend functions to copy mixin functions into receiving objects. \nFunction extend(destination, source) {\n for(var element in source) {\n if(source.hasOwnProperty(element)) {\n destination[element] = source[element];\n}}}\nextend(Obj.prototype, mixinObj);" }, { heading: "Mixins - Functional Logic", body: "var asCircle = function() { this.area = () => {return Math.PI * this.radius * this.radius}; return this; var circle = function(radius) { this.radius = radius; }; asCircle.call(Circle.prototype); var circle1 = new Circle(5); circle1.area();" }, { heading: "Mixins - Functional with Options", body: "var asOval = (options) => { this.grow = () => { this.shortRadius += options.growBy; }; this.shrinks = () => { this.shortRadius -= options.shrinkBy;}; return this; }; var Oval = (shortRadius) => {this.shortRadius = shortRadius;}; asOval.call(Oval.prototype, {growBy: 2, shrinkBy: 2}); " }, { heading: "Mixins - Functional with Caching and Closure", body: "var asRectangle = (function(){ function area() {return this.length * this.width;} return function() {this.area = area; return this;} })(); var Rectangle = (length, width) => {this.length = length; this.width = width;}; asRectangle.call(Rectangle.prototype);" }, { heading: "Mixins - Functional and Options with Currying", body: "function.prototype.curry = () => { var fn = this; var args = [].slice.call(arguments, 0); return () => { return fn.apply(this, args.concat([].slice.call(arguments, 0))); }} var asRectangle = (function() { function grow(growBy) { this.length += growBy, this.width += growBy; } return (options) => { this.grow = grow.curry(options['growBy']); return this; }})(); asRectangle.call(Rectangle.prototype, {growBy: 2}); " }] }, { chapter: "Function Composition", sections: [{ heading: "Introduction", body: "In math, function compositions are defined as f o g or f(g(x)). Similarly, function compositions in JavaScript can be expressed through cascading functions, but in reverse. For example, foo(bar(x)) would be written as bar(x).foo(y -> y)." }, { heading: "Currying", body: "A cleaner implementation of function compositions would be through a technique called currying. This is where functions with multiple arguments, through the use of closures, can be inputted each argument separately, or reduced, before finally executing. For example: add = (a, b) => return a + b; curriedAdd = (a) => { return (b) => add(a, b); }." }, { heading: "Uncurrying", body: "In order to uncurry or to retrieve the multiple argument function, simply input all of the arguments into the curry function. Ex.: curriedAdd = (a) => (b) => return a + b; add = (a,b) => curriedAdd(a)(b);" }, { heading: "How is Curry Used?", body: "JavaScript's Function prototype's bind method implements currying, i.e., multiply = multiply.bind(null, 3); multiply(2) // returns 6. Furthermore, the React-Redux connect method utilizes currying to map the states to the props in a component. Lastly, event handlers are another application of currying." }, { heading: "Pipe", body: "Another implementation of function compositions can be through pipes, which would be similar in application to function chaining." }, { heading: "Higher Order Functions", body: "Higher Order Functions are functions that can take another function as an argument or return a function. As such, currying can be used to generate higher order functions." }] }, { chapter: "Event Handling", sections: [{ heading: "Event Delegation", body: "Since events bubble upward from children nodes to parents, it's possible to use parent components to delegate event responses according to the triggered node's properties." }, { heading: "Event Delegation Example", body: "document.getElementById('list').addEventListener('click', (e) => { if(e.target && e.target.nodeName == 'li') alert('list item', e.target.id.replace('post', ''), 'was clicked!')});" }, { heading: "Event Bubbling", body: "Event bubbling can also be stopped by including this method in the event handler: (e) => {event.stopPropagation()}; " }] }, { chapter: "Type Coercion", sections: [{ heading: "Data Types", body: "The different data types in JavaScript are: string, number, boolean, object, function, null, and undefined." }, { heading: "Objects", body: "Then, the objects in JavaScript are Object, Date, and Array." }, { heading: "typeof", body: "The typeof method would return the data type of a variable; however, the exceptions are that NaN returns number, array.date.null returns an object, and undefined returns undefined." }, { heading: "instanceof", body: "This method returns a boolean value denoting whether a variable is an instance of the designated Object. Comparisons are done by comparing Object.getPrototypeOf(o) to Object.prototype." }, { heading: "toString", body: "Another method for determining type coercion is through Object.prototype.toString.call(o) which returns a string, [object ObjectName]. The reason that toString cannot be called directly onto an object o is that Strings, Numbers, Arrays, and Date override the Object's toString method." }] }, { chapter: "Handling Asynchronous Calls", sections: [{ heading: "Callbacks", body: "var a = (args, callbackFunction) => {} " }, { heading: "Promises", body: "new Promise((resolveFunction, rejectFunction)) => {}); Promise.then(onFulfilled?: Function, onRejected?: Function) => Promise" }, { heading: "Promise Chaining", body: "fetch(url).then(process).then(save).catch(handleErrors);" }, { heading: "Async/Await", body: "An alternative to the prevalent promises and callbacks in writing asynchronous code are async/await which is a layer built on top of promises. While async/await are non-blocking like promises, they help to transform asynchronous code into cleaner synchronous-like code. Example code: const exampleAction = async () => { console.log(await getJSON()); return true; }" }, { heading: "Async/Await Explanation", body: "A function denoted by the async keyword inherently becomes a promise where the resolve value is the function's return value. Meanwhile, await can only be called within an async function where the promise (getJSON in this case) will be waited to resolve before being printed to the console." }] }, { chapter: "Selecting or Finding Nodes", sections: [{ heading: "CSS Selectors", body: "Non-Live Results: document.querySelector(CSS selectors)/DFS, document.querySelectorAll(CSS Selectors), element.matches(CSS Selectors) === true, element.querySelector(CSS Selectors). Live Results: document.getElementByTagName, document.getElementById" }, { heading: "CSS Selectors List", body: _react2.default.createElement(
 				"div",
 				null,
 				".example = elements with class='example'",
@@ -18614,35 +18614,143 @@ function fetchTutorialPage(index) {
 				_react2.default.createElement("br", null),
 				"a[href*='x'] = a elements with href attribute value containing substring 'x'",
 				_react2.default.createElement("br", null),
-				"a:active = active link",
+				"a:active/hover/link/visited = active/hovered/unvisited/visited link",
 				_react2.default.createElement("br", null),
 				"p::after/before = insert something after/before each paragraph element",
 				_react2.default.createElement("br", null),
-				"input:checked/disabled/enabled = every checked/disabled/enabled input element",
+				"input:checked/disabled/enabled/focus/optional/read-only/read-write/required = every checked/disabled/enabled/focused/optional/read-only/read-write/required input element",
 				_react2.default.createElement("br", null),
-				"x:empty = every x element with no children"
-			) }] /*,
-        {chapter: "DOM Traversal and Manipulation", sections: [
-        {heading: "", body: ""}
-        ]},
-        {chapter: "Performance", sections: [
-        {heading: "Document Fragments", body: ""},
-        {heading: "Node Caching", body: ""}
-        ]},
-        {chapter: "CSS", sections: [
-        {heading: "Layout", body: ""},
-        {heading: "Responsive Design", body: ""},
-        {heading: "Adaptive Design", body: ""},
-        {heading: "Specificity", body: ""},
-        {heading: "Namespacing and Naming of ClassNames", body: ""}
-        ]},
-        {chapter: "HTML", sections: [
-        {heading: "", body: ""}
-        ]},
-        {chapter: "System Design", sections: [
-        {heading: "Rendering", body: ""}
-        ]}*/
-	}];
+				"input:in-range/out-of-range/invalid/valid = every input element where the value is in-range/out-of-range/invalid/valid",
+				_react2.default.createElement("br", null),
+				"x:empty = every x element with no children",
+				_react2.default.createElement("br", null),
+				"p:first-child/last-child/nth-child(n)/nth-last-child(n) = every paragraph element which is its parent's first/last/nth/nth-from-last child",
+				_react2.default.createElement("br", null),
+				"p::first-letter/line = selects the first letter/line of every paragraph element",
+				_react2.default.createElement("br", null),
+				"p:first-of-type/last-of-type/nth-of-type(n)/nth-last-of-type(n) = every paragraph element that is the first/last/nth/nth-from-last paragraph element child of its parent",
+				_react2.default.createElement("br", null),
+				"p:only-of-type/only-child = every paragraph element that is the only paragraph element/child of its parent",
+				_react2.default.createElement("br", null),
+				"p:lang(language) = every paragraph element with a lang attribute equal to the language",
+				_react2.default.createElement("br", null),
+				":not(selector) = every element that does not match the selector",
+				_react2.default.createElement("br", null),
+				":root = document's root element",
+				_react2.default.createElement("br", null),
+				"::selection = portion of element selected by a user",
+				_react2.default.createElement("br", null),
+				"#id:target = current active #id element"
+			) }] }, { chapter: "DOM Traversal and Manipulation", sections: [{ heading: "Traversal Up and Down", body: _react2.default.createElement(
+				"div",
+				null,
+				"node.parentNode - returns parent Node",
+				_react2.default.createElement("br", null),
+				"node.firstChild - returns first child",
+				_react2.default.createElement("br", null),
+				"node.lastChild - returns last child",
+				_react2.default.createElement("br", null),
+				"node.childNodes - returns array of children nodes"
+			) }, { heading: "Traversal Left and Right", body: _react2.default.createElement(
+				"div",
+				null,
+				"node.previousSibling - returns previous sibling node",
+				_react2.default.createElement("br", null),
+				"node.nextSibling - returns next sibling node"
+			) }, { heading: "Manipulation", body: _react2.default.createElement(
+				"div",
+				null,
+				"Adding Nodes: element.append(node), element.prepend(node), element.appendTo(\"targetElement\"), element.prependTo(\"targetElement\"), element.before(CSS Selectors), element.after(CSS Selectors), element.insertBefore(CSS Selectors), element.insertAfter(CSS Selectors)",
+				_react2.default.createElement("br", null),
+				"Removing Nodes: $(CSS Selectors).remove(), $(CSS Selectors).detach() - keeps data/events, $(CSS Selectors).empty() - removes children and content",
+				_react2.default.createElement("br", null),
+				"Replacing Nodes: $(CSS Selectors).replaceWith(node), $(node).replaceAll(CSS Selectors)",
+				_react2.default.createElement("br", null),
+				"Copying Nodes: $(CSS Selectors).clone(true/false) - returns cloned elements with/without event handlers copied",
+				_react2.default.createElement("br", null),
+				"Creating Nodes: document.createElement(\"element\"), document.createTextNode(String)",
+				_react2.default.createElement("br", null),
+				"Changing Text Content: $(CSS Selectors).html(HTML/Text node), $(CSS Selectors).text(Text node)",
+				_react2.default.createElement("br", null),
+				"Toggling: $(CSS Selectors).toggleClass(className)",
+				_react2.default.createElement("br", null),
+				"Removing or Adding Class Names: $(CSS Selectors).removeClass(className), $(CSS Selectors).addClass(className)"
+			) }] }, { chapter: "Performance", sections: [{ heading: "Document Fragments", body: _react2.default.createElement(
+				"div",
+				null,
+				"Document Fragments are a way to manipulate the DOM without interacting with the live/visible DOM until the end.",
+				_react2.default.createElement("br", null),
+				"Example:",
+				_react2.default.createElement("br", null),
+				"const fragment = document.createDocumentFragment();",
+				_react2.default.createElement("br", null),
+				"var listItem = document.createElement(\"li\");",
+				_react2.default.createElement("br", null),
+				"fragment.appendChild(listItem);",
+				_react2.default.createElement("br", null),
+				"document.querySelector(\"ul\").appendChild(fragment);"
+			) }, { heading: "Node Caching", body: _react2.default.createElement(
+				"div",
+				null,
+				"Another technique to increase DOM Manipulation perforamnce is to cache the results of a query.",
+				_react2.default.createElement("br", null),
+				"Example:",
+				_react2.default.createElement("br", null),
+				"const $id = document.getElementById('id');",
+				_react2.default.createElement("br", null),
+				"$id.append(node);"
+			) }] }, /*
+           {chapter: "CSS", sections: [
+           {heading: "Layout", body: ""},
+           {heading: "Responsive Design", body: ""},
+           {heading: "Adaptive Design", body: ""},
+           {heading: "Specificity", body: ""},
+           {heading: "Namespacing and Naming of ClassNames", body: ""}
+           ]},
+           {chapter: "HTML", sections: [
+           {heading: "", body: ""}
+           ]},*/
+	{ chapter: "System Design", sections: [{ heading: "Rendering", body: _react2.default.createElement(
+				"div",
+				null,
+				"Client Side (CSR): The advantages of client side rendering are that it's excellent for rendering web applications, there are plenty of powerful JavaScript libraries and frameworks to choose from, rendering is extremely fast since the duplicate content doesn't have to be reloaded, and it is possible to create rich user interactions. Its downfalls come with extra implementation complexities to attain good Search Engine Optimizations, the requirement of external libraries, and a possibly long initial load time.",
+				_react2.default.createElement("br", null),
+				"Server Side (SSR): On the other hand, server side rendering allows for better SEO and quick initial load times, which is great for static sites. However, that also means that the server must receive multiple requests and deliver responses for each page, thus, pages will need to be re-rendered fully, creating a slowed process. Furthermore, without a JavaScript library, it's difficult to create fulfilling user interactions.",
+				_react2.default.createElement("br", null),
+				"Universal Rendering: With React, universal rendering is where the server renders the react components and sends the result as HTML to the browser with the initial load. Then, the client takes over and re-renders the component as well as further rendering needs. This is only possible when the server understands JSX elements through modules like Babel (with or without webpack). Doing so allows for the web application to have good SEO while also fast and powerful rendering; however, universal rendering also introduces extra complexities and extra maintanence requirements that may not justify the improvements universal rendering brings."
+			) },
+		//{heading: "Layout", body: ""},
+		{ heading: "State Management", body: _react2.default.createElement(
+				"div",
+				null,
+				"Unidirectional",
+				_react2.default.createElement("br", null),
+				"Two-Way Data Binding",
+				_react2.default.createElement("br", null),
+				"Passive Programming Model",
+				_react2.default.createElement("br", null),
+				"Reactive Programming Model"
+			) }, { heading: "Asynchronous Flow", body: _react2.default.createElement(
+				"div",
+				null,
+				"XHR",
+				_react2.default.createElement("br", null),
+				"Bidirectional flow",
+				_react2.default.createElement("br", null),
+				"Older browsers: XHR",
+				_react2.default.createElement("br", null),
+				"Script Tags",
+				_react2.default.createElement("br", null),
+				"Hidden iFrames"
+			) }, { heading: "Separation of Concerns", body: _react2.default.createElement(
+				"div",
+				null,
+				"MVC",
+				_react2.default.createElement("br", null),
+				"MVVM",
+				_react2.default.createElement("br", null),
+				"MVP"
+			) }, { heading: "Multi-Device Support", body: "" }, { heading: "Asset Delivery", body: "" }] }];
 	return {
 		type: "SELECT_INDEX",
 		payload: {
