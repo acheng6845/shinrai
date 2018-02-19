@@ -154,12 +154,12 @@ export default class QuoteSlider extends React.Component {
 
 		const transparentStyle = {
 			backgroundColor: "#006666",
-			height: isSmall ? "70vh" : "40vh",
-			width: "40vw",
+			height: isSmall ? "40vh" : "40vh",
+			width: isSmall ? "80vw" : "40vw",
 			position: "relative",
-			left: "30vw",
+			left: isSmall? "10vw" : "30vw",
 			opacity: "0.5",
-			top: "5vh",
+			top: isSmall ? "20vh" : "5vh",
 		};
 
 		return (
