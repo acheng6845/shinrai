@@ -18723,34 +18723,32 @@ function fetchTutorialPage(index) {
 		{ heading: "State Management", body: _react2.default.createElement(
 				"div",
 				null,
-				"Unidirectional",
+				"Unidirectional: This type of data binding requires that HTML values can only be changed through JavaScript or the controller. There is only one watcher checking the controller and the HTML simply sends events back to that controller. An example of which is React and how only its components can change the state. This data flow leads to more predictable and bug-free code.",
 				_react2.default.createElement("br", null),
-				"Two-Way Data Binding",
+				"Two-Way Data Binding: However, it is also possible for both the controller and the HTML to alter the state in a two-way binding. In such a case, there are two watchers, one for each actor and they serve to detect and communicate any alterations between the controller and view. At the cost of extra complexities and possible bugs, two-way binding allows for users to immediately update both model and view values through the UI. An example of a framework that utilizes two-way data binding is Angular.",
 				_react2.default.createElement("br", null),
-				"Passive Programming Model",
+				"Passive Programming Model: When one module is responsible for altering the state of another module, it is called a proactive object while the acted upon module is a passive object. This concept of state management is known as passive programming.",
 				_react2.default.createElement("br", null),
-				"Reactive Programming Model"
+				"Reactive Programming Model: Meanwhile, if an object changes its own state by listening to events emitted by other objects, the object is called reactive and the event emitters are called listenables. This relationship is known as reactive programming.",
+				_react2.default.createElement("br", null),
+				"Essentially, reactive programming is manipulating, merging, filtering, and mapping asynchronous data streams. Then, what is a stream that is so central to reactive programming? It's a sequence of ongoing events sorted by time. Three outputs can be produced through streams - value, error, and a completion signal. Everythng then can be detailed by the Observer Design Pattern where functions called observers deal with these outputs by subscribing or listening to these data streams.",
+				_react2.default.createElement("br", null),
+				"Then, how does one use streams? One example is through clicks on a button. These clicks can be aggregated into lists according to intervals where the button isn't clicked. This stream can then be mapped according to length values and finally filtered to only contain certain amounts of clicks in successive order."
 			) }, { heading: "Asynchronous Flow", body: _react2.default.createElement(
 				"div",
 				null,
-				"XHR",
+				"XHR vs. Bidirectional flow",
 				_react2.default.createElement("br", null),
-				"Bidirectional flow",
-				_react2.default.createElement("br", null),
-				"Older browsers: XHR",
-				_react2.default.createElement("br", null),
-				"Script Tags",
-				_react2.default.createElement("br", null),
-				"Hidden iFrames"
+				"Older browsers: XHR vs. Script Tags vs. Hidden iFrames"
 			) }, { heading: "Separation of Concerns", body: _react2.default.createElement(
 				"div",
 				null,
-				"MVC",
+				"MVC: Model-View-Controller -> the Model emits events that alter the View which passes commands to the Controller that can manipulate the Model.",
 				_react2.default.createElement("br", null),
-				"MVVM",
+				"MVVM: Model-View-Viewmodel or View-Model -> the View Model retrieves data from the Model and reformats or serves the data raw to the View. The View Model also contains functions that correspond to events or commands triggered from the View as well as managing logical state changes that alter the values in the View. Thus, the View Model is two-way binded to the View.",
 				_react2.default.createElement("br", null),
-				"MVP"
-			) }, { heading: "Multi-Device Support", body: "" }, { heading: "Asset Delivery", body: "" }] }];
+				"MVP: Model-View-Presenter -> the Presenter can update the View and accepts events from the Model while also having the ability to manipulate it. With a passive View, the View is unaware of the Model and only receives updates from the Presenter which handles changes in the Model. Meanwhile, with a Supervising Controller, the View directly accesses the Model while the Presenter updates the Model and sometimes alters the View when additional logic is needed."
+			) }, { heading: "Multi-Device Support", body: "Responsive Layout that adapts to different screen sizes. Do not have hidden contents for certain devices. Make certain that the website is readable on all devices. Overall experience should be consistent across all devices. And, optimal website perforamne across all devices must be the top priority." }, { heading: "Asset Delivery", body: "Build Dependencies -> Testing (Unit and Integration) -> Deployment" }] }, { chapter: "Event Loop", sections: [{ heading: "Call Stack", body: "A call stack is a data structure which records the context where the code is running. Once the program enters a function, the context is pushed into the stack and once the function returns something, the stack is popped. Since JavaScript is single-threaded, there is only one asynchronous call stack." }, { heading: "Blocking", body: "Generally, blocking is defined by code that is slow and on a call stack, such as image processing and network requests." }, { heading: "Asynchronous Callbacks", body: "In handling blocking in the call stack, asynchronous callbacks are utilized. These callbacks queue the functions to be pushed into the call stack at a later time, i.e., setTimeOut(), AJAX requests, eventHandlers." }, { heading: "Concurrency", body: "While the JavaScript runtime is asynchronous and can only maintain one call stack, the browser has APIs, acting as additional threads, which can be utilized to run concurrently with the runtime. Thus, when setTimeOut is called into the call stack, it triggers the respective web API which countdowns the millisecond parameter provided and pops the stack. Then, once the web API is done, it pushes the callback onto the callback queue." }, { heading: "Event Loop", body: "The job of the event loop is then to watch the call stack and callback queue. When the stack is empty and the queue isn't empty, it polls the first item from the queue and pushes it onto the stack." }, { heading: "Rendering", body: "The browser looks to render the page 60 fps, however, it cannot render when the call stack isn't empty. In other words, every 16 ms, the browser pushes a render into the render queue, which has higher priority than the callback queue for the event loop. Thus, when functions are queued up asynchronously, it gives time for the browser to pop the render queue in between the code processing rather than if it was done synchronously." }] }];
 	return {
 		type: "SELECT_INDEX",
 		payload: {
@@ -39810,7 +39808,7 @@ function reducer() {
 	var action = arguments[1];
 
 	var dataArray = [{
-		backgroundImage: "cloud.png",
+		backgroundImage: "waves.png",
 		title: { text: "Tutorial" },
 		body: { text: "Dozens Of Lessons For", subText: "Improving Your Vanilla JavaScript" },
 		end: { text: "From object prototyping to hoisting and currying - learn what", subText: "companies are expecting front end developers to know." },
@@ -39819,7 +39817,7 @@ function reducer() {
 		artist: "Deb Watson",
 		link: "/tutorial"
 	}, {
-		backgroundImage: "abyss.png",
+		backgroundImage: "waves.png",
 		title: { text: "Tool" },
 		body: { text: "Find Robust Tools For", subText: "Popular Mobile Games" },
 		end: { text: "Whenever you need information on a unit or mechanic, a quick search", subText: "through the wiki service will yield the necessary results." },
@@ -47786,51 +47784,57 @@ var QuoteSlider = function (_React$Component) {
 				backgroundRepeat: "no-repeat",
 				display: "block",
 				width: "100vw",
-				height: height
-
+				height: isSmall ? "80vh" : "50vh"
 			};
 
 			var titleStyle = {
-				position: "relative",
-				fontSize: "1em",
+				//position: "relative",
+				fontSize: isSmall ? "12px" : "16px",
 				color: "white",
-				//textShadow: "2px 2px black",
+				textShadow: "0 0 2px black",
 				textAlign: position,
 				//marginTop: title.top,
 				display: "none",
 				//left: title.left != null ? title.left : "0%",
-				top: "8vh",
+				//top: "2vh",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
-				whiteSpace: "nowrap"
+				whiteSpace: "nowrap",
+				height: "16px",
+				padding: "40px"
+
 			};
 
 			var bodyStyle = {
-				position: "relative",
+				//position: "relative",
 				fontSize: isSmall ? "20px" : "3em",
 				color: "white",
-				textShadow: "2px 2px black",
+				textShadow: "0 0 2px black",
 				textAlign: position,
 				//marginTop: body.top,
 				display: "none",
 				//left: body.left != null ? body.left : "0%",
-				top: "12vh",
+				//top: "12vh",
 				fontWeight: "700",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
-				whiteSpace: isSmall ? "wrap" : "nowrap"
+				whiteSpace: isSmall ? "wrap" : "nowrap",
+				width: "100%",
+				height: "auto"
 			};
 
 			var endStyle = {
 				position: "relative",
-				fontSize: isSmall ? "12px" : "20px",
+				fontSize: isSmall ? "12px" : "16px",
 				color: "white",
-				textShadow: "2px 2px black",
+				textShadow: "0 0 2px black",
 				textAlign: position,
 				//marginTop: end.top,
 				display: "none",
 				//left: end.left != null ? end.left : "0%",
-				top: "15vh",
+				//top: "15vh",
+				height: "auto",
+				width: "100%",
 				overflow: "hidden",
 				textOverflow: "ellipsis",
 				whiteSpace: isSmall ? "wrap" : "nowrap"
@@ -47840,25 +47844,28 @@ var QuoteSlider = function (_React$Component) {
 				position: "absolute",
 				fontSize: "1em",
 				color: "white",
-				textShadow: "2px 2px black",
+				textShadow: "0 0 2px black",
 				textAlign: position,
 				top: "4vh",
 				left: "3vw"
 			};
 
 			var linkStyle = {
-				position: "relative",
+				//position: "relative",
 				textAlign: position,
-				top: "18vh",
-				fontSize: "20px",
+				//top: "18vh",
+				fontSize: "16px",
 				fontWeight: "700",
-				textShadow: "1px 1px silver",
-				display: "none"
+				//textShadow: "1px 1px silver",
+				display: "none",
+				width: "100%",
+				height: "auto",
+				marginTop: "5vh"
 			};
 
 			var buttonStyle = {
 				display: "none",
-				backgroundColor: "#AFEEEE",
+				backgroundColor: "#006666",
 				paddingLeft: "2em",
 				paddingRight: "2em",
 				paddingTop: "1em",
@@ -47870,12 +47877,27 @@ var QuoteSlider = function (_React$Component) {
 				display: "none"
 			};
 
+			var transparentStyle = {
+				backgroundColor: "#006666",
+				height: isSmall ? "70vh" : "40vh",
+				width: "40vw",
+				position: "relative",
+				left: "30vw",
+				opacity: "0.5",
+				top: "5vh"
+			};
+
 			return _react2.default.createElement(
 				'div',
 				{ style: sectionStyle },
 				_react2.default.createElement(
 					'div',
-					null,
+					{ style: artistStyle },
+					"Image Credit: " + artist
+				),
+				_react2.default.createElement(
+					'div',
+					{ style: transparentStyle },
 					_react2.default.createElement(
 						'div',
 						{ id: 'titleText', ref: function ref(el) {
@@ -47905,7 +47927,6 @@ var QuoteSlider = function (_React$Component) {
 							}, style: endStyle },
 						end.text,
 						end.subText ? _react2.default.createElement('br', null) : "",
-						end.subText ? _react2.default.createElement('br', null) : "",
 						end.subText
 					),
 					_react2.default.createElement(
@@ -47916,11 +47937,6 @@ var QuoteSlider = function (_React$Component) {
 						_react2.default.createElement(LinkButton, { ref: function ref(el) {
 								return _this3.linkButton = el;
 							}, link: link })
-					),
-					_react2.default.createElement(
-						'div',
-						{ style: artistStyle },
-						"Image Credit: " + artist
 					)
 				)
 			);
@@ -47954,7 +47970,7 @@ var LinkButton = function (_React$Component2) {
 
 		_this4.state = {
 			color: "white",
-			backgroundColor: "#AFEEEE"
+			backgroundColor: "#006666"
 		};
 		return _this4;
 	}
@@ -47977,7 +47993,7 @@ var LinkButton = function (_React$Component2) {
 		key: 'onHover',
 		value: function onHover() {
 			this.setState({
-				color: "#AFEEEE",
+				color: "#006666",
 				backgroundColor: "white"
 			});
 		}
@@ -47986,7 +48002,7 @@ var LinkButton = function (_React$Component2) {
 		value: function onMouseLeave() {
 			this.setState({
 				color: "white",
-				backgroundColor: "#AFEEEE"
+				backgroundColor: "#006666"
 			});
 		}
 	}, {
@@ -48003,8 +48019,9 @@ var LinkButton = function (_React$Component2) {
 				paddingBottom: "20px",
 				paddingLeft: "40px",
 				paddingRight: "40px",
-				borderRadius: "35%",
-				border: "2px solid silver"
+				//borderRadius: "35%",
+				border: "2px solid white"
+				//border: "2px solid silver",
 			};
 
 			return _react2.default.createElement(
@@ -48015,8 +48032,7 @@ var LinkButton = function (_React$Component2) {
 				_react2.default.createElement(
 					_reactRouterDom.Link,
 					{ style: navStyle, to: link },
-					_react2.default.createElement('span', { className: 'glyphicon glyphicon-triangle-right' }),
-					'\xA0View Page'
+					'View Page'
 				)
 			);
 		}
@@ -49911,16 +49927,23 @@ var TutorialIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 			    error = _props.error,
 			    chapters = _props.chapters;
 
-			var largerStyle = {};
+			var largerStyle = {
+				display: "flex",
+				//justifyContent: "space-around",
+				alignItems: "stretch"
+			};
 			var tableStyle = {
 				borderRight: "1px dotted black",
 				borderBottom: "1px dotted black",
 				height: "90vh",
-				backgroundColor: "#eee"
+				backgroundColor: "#eee",
+				flexBasis: "25%"
 			};
 			var contentStyle = {
 				height: "90vh",
-				backgroundColor: "white"
+				backgroundColor: "white",
+				flexBasis: "65%"
+
 			};
 
 			var tableOfContents = _react2.default.createElement(NavbarLeft, { heading: 'Chapters', links: error == null && data != null ? chapters : "", index: this.props.index, onClick: this.fetchTutorialPage.bind(this) });
@@ -49932,12 +49955,12 @@ var TutorialIndex = (_dec = (0, _reactRedux.connect)(function (store) {
 				{ style: largerStyle },
 				_react2.default.createElement(
 					'div',
-					{ className: 'col-md-3', style: tableStyle },
+					{ style: tableStyle },
 					tableOfContents
 				),
 				_react2.default.createElement(
 					'div',
-					{ className: 'col-md-9', style: contentStyle },
+					{ style: contentStyle },
 					pageContent
 				)
 			);

@@ -34,17 +34,22 @@ export default class TutorialIndex extends React.Component {
 		
 		const { data, error, chapters } = this.props;
 		const largerStyle = {
-			
+			display: "flex",
+			//justifyContent: "space-around",
+			alignItems: "stretch",
 		};
 		const tableStyle = {
 			borderRight: "1px dotted black",
 			borderBottom: "1px dotted black",
 			height: "90vh",
 			backgroundColor: "#eee",
-		};
+			flexBasis: "25%",
+		}
 		const contentStyle = {
 			height: "90vh",
 			backgroundColor: "white",
+			flexBasis: "65%",
+
 		};
 
 		const tableOfContents = <NavbarLeft heading="Chapters" links={error == null && data != null ? chapters : ""} index={this.props.index} onClick={this.fetchTutorialPage.bind(this)}/>;
@@ -54,10 +59,10 @@ export default class TutorialIndex extends React.Component {
 
 		const largeBrowserDiv = (
 			<div style={largerStyle}>
-				<div className="col-md-3" style={tableStyle}>
+				<div style={tableStyle}>
 					{tableOfContents}
 				</div>
-				<div className="col-md-9" style={contentStyle}>
+				<div style={contentStyle}>
 					{pageContent}
 				</div>
 			</div>

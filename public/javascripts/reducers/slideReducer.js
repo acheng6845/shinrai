@@ -4,7 +4,7 @@ export default function reducer(state={
 }, action) {
 	const dataArray = [
 		{
-			backgroundImage: "cloud.png",
+			backgroundImage: "waves.png",
 			title: {text: "Tutorial"},
 			body: {text: "Dozens Of Lessons For", subText: "Improving Your Vanilla JavaScript"},
 			end: {text: "From object prototyping to hoisting and currying - learn what", subText: "companies are expecting front end developers to know."},
@@ -14,7 +14,7 @@ export default function reducer(state={
 			link: "/tutorial",
 		},
 		{
-			backgroundImage: "abyss.png",
+			backgroundImage: "waves.png",
 			title: {text: "Tool"},
 			body: {text: "Find Robust Tools For", subText: "Popular Mobile Games"},
 			end: {text: "Whenever you need information on a unit or mechanic, a quick search", subText: "through the wiki service will yield the necessary results."},

@@ -59,51 +59,57 @@ export default class QuoteSlider extends React.Component {
 			backgroundRepeat: "no-repeat",
 			display: "block",
 			width: "100vw",
-			height: height,
-			
+			height: isSmall ? "80vh" : "50vh",
 		};
 
 		const titleStyle = {
-			position: "relative",
-			fontSize: "1em",
+			//position: "relative",
+			fontSize: isSmall ? "12px" : "16px",
 			color: "white",
-			//textShadow: "2px 2px black",
+			textShadow: "0 0 2px black",
 			textAlign: position,
 			//marginTop: title.top,
 			display: "none",
 			//left: title.left != null ? title.left : "0%",
-			top: "8vh",
+			//top: "2vh",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
 			whiteSpace: "nowrap",
+			height: "16px",
+			padding: "40px"
+
 		};
 
 		const bodyStyle = {
-			position: "relative",
+			//position: "relative",
 			fontSize: isSmall ? "20px" : "3em",
 			color: "white",
-			textShadow: "2px 2px black",
+			textShadow: "0 0 2px black",
 			textAlign: position,
 			//marginTop: body.top,
 			display: "none",
 			//left: body.left != null ? body.left : "0%",
-			top: "12vh",
+			//top: "12vh",
 			fontWeight: "700",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
 			whiteSpace: isSmall ? "wrap" : "nowrap",
+			width: "100%",
+			height: "auto",
 		};
 
 		const endStyle = {
 			position: "relative",
-			fontSize: isSmall ? "12px" : "20px",
+			fontSize: isSmall ? "12px" : "16px",
 			color: "white",
-			textShadow: "2px 2px black",
+			textShadow: "0 0 2px black",
 			textAlign: position,
 			//marginTop: end.top,
 			display: "none",
 			//left: end.left != null ? end.left : "0%",
-			top: "15vh",
+			//top: "15vh",
+			height: "auto",
+			width: "100%",
 			overflow: "hidden",
 			textOverflow: "ellipsis",
 			whiteSpace: isSmall ? "wrap" : "nowrap",
@@ -113,25 +119,28 @@ export default class QuoteSlider extends React.Component {
 			position: "absolute",
 			fontSize: "1em",
 			color: "white",
-			textShadow: "2px 2px black",
+			textShadow: "0 0 2px black",
 			textAlign: position,
 			top: "4vh",
 			left: "3vw",
 		};
 
 		const linkStyle = {
-			position: "relative",
+			//position: "relative",
 			textAlign: position,
-			top: "18vh",
-			fontSize: "20px",
+			//top: "18vh",
+			fontSize: "16px",
 			fontWeight: "700",
-			textShadow: "1px 1px silver",
-			display: "none"
+			//textShadow: "1px 1px silver",
+			display: "none",
+			width: "100%",
+			height: "auto",
+			marginTop: "5vh",
 		};
 
 		const buttonStyle = {
 			display: "none",
-			backgroundColor: "#AFEEEE",
+			backgroundColor: "#006666",
 			paddingLeft: "2em",
 			paddingRight: "2em",
 			paddingTop: "1em",
@@ -141,11 +150,22 @@ export default class QuoteSlider extends React.Component {
 
 		const linkButtonStyle = {
 			display: "none",
-		}
+		};
+
+		const transparentStyle = {
+			backgroundColor: "#006666",
+			height: isSmall ? "70vh" : "40vh",
+			width: "40vw",
+			position: "relative",
+			left: "30vw",
+			opacity: "0.5",
+			top: "5vh",
+		};
 
 		return (
 			<div style={sectionStyle}>
-				<div>
+				<div style={artistStyle}>{"Image Credit: "+artist}</div>
+				<div style={transparentStyle}>
 					<div id="titleText" ref={el => this.title = el} style={titleStyle} >
 						<span style={buttonStyle} ref={el => this.titleText = el}>
 							{title.text ? title.text.toUpperCase() : ""}
@@ -159,13 +179,11 @@ export default class QuoteSlider extends React.Component {
 					<div id="endText" ref={el => this.end = el} style={endStyle} >
 						{end.text}
 						{end.subText ? <br /> : ""}
-						{end.subText ? <br /> : ""}
 						{end.subText}
 					</div>
 					<div id="linkButton" ref={el => this.link = el} style={linkStyle} >	
 						<LinkButton ref={el => this.linkButton = el} link={link}/>
 					</div>
-					<div style={artistStyle}>{"Image Credit: "+artist}</div>
 				</div>
 			</div>
 		);
@@ -188,7 +206,7 @@ class LinkButton extends React.Component {
 
 		this.state = {
 			color: "white",
-			backgroundColor: "#AFEEEE",
+			backgroundColor: "#006666",
 		};
 	}
 
@@ -204,7 +222,7 @@ class LinkButton extends React.Component {
 
 	onHover() {
 		this.setState({
-			color: "#AFEEEE",
+			color: "#006666",
 			backgroundColor: "white",
 		});
 	}
@@ -212,7 +230,7 @@ class LinkButton extends React.Component {
 	onMouseLeave() {
 		this.setState({
 			color: "white",
-			backgroundColor: "#AFEEEE",
+			backgroundColor: "#006666",
 		});
 	}
 
@@ -226,14 +244,15 @@ class LinkButton extends React.Component {
 			paddingBottom: "20px",
 			paddingLeft: "40px",
 			paddingRight: "40px",
-			borderRadius: "35%",
-			border: "2px solid silver",
+			//borderRadius: "35%",
+			border: "2px solid white",
+			//border: "2px solid silver",
 		};
 
 		return (
 			<div onMouseEnter={this.onHover.bind(this)} onMouseLeave={this.onMouseLeave.bind(this)} ref={el => this.navLink = el} >
 				<Link style={navStyle} to={link}>
-					<span className="glyphicon glyphicon-triangle-right" />&nbsp;View Page
+					View Page
 				</Link>
 			</div>
 		);
